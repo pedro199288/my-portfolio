@@ -157,9 +157,24 @@ h2 {
 @media only screen and (min-width: 720px) {
     #navbar {
         height: 9rem;
-    }
+    } 
+}
 
+/* About */
+#about {
+    display: block;
+}
 
+#about-data {
+    display: flex;
+    justify-content: space-around;
+    margin: 3rem;
+}
 
-    
+.content-to-right {
+    text-align: right;
+}
+
+.content-to-left {
+    text-align: left;
 }

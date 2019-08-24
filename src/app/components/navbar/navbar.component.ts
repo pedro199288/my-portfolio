@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  public links: object[];
+  public links: any[]; // FIXME: It gave error with objetc[] type
 
   constructor() {
     this.links = [

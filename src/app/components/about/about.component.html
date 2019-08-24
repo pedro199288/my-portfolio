@@ -1,0 +1,18 @@
+<div class="wrapper">
+  <div id="about-data">
+    <div class="content-to-right">
+      <div *ngFor="let data of personalData" class="about-data-item">
+        <h3>{{ data.key }}</h3>
+        <p>{{ data.value }}</p>
+      </div>
+    </div>
+    <div class="content-to-left">
+      
+    </div>
+  </div>
+  <div id="about-description">
+    <p>
+      {{ description }}
+    </p>
+  </div>
+</div>
