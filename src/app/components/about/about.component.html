@@ -1,18 +1,23 @@
 <div class="wrapper">
+  <h2 class="section-title">{{ 'about' | uppercase }}</h2>
   <div id="about-data">
-    <div class="content-to-right">
-      <div *ngFor="let data of personalData" class="about-data-item">
-        <h3>{{ data.key }}</h3>
-        <p>{{ data.value }}</p>
+    <div class="div-side content-to-right">
+      <div *ngFor="let dataElement of dataLeft" class="about-data-item">
+        <h3>{{ dataElement.text | titlecase }}</h3>
+        <p>{{ dataElement.value }}</p>
       </div>
     </div>
-    <div class="content-to-left">
-      
+    <div class="div-side content-to-left">
+      <div *ngFor="let dataElement of dataRight" class="about-data-item">
+        <h3>{{ dataElement.text | titlecase }}</h3>
+        <p *ngIf="!dataElement.link">{{ dataElement.value }}</p>
+        <a target="_blank" *ngIf="dataElement.link" href="{{ dataElement.value }}">{{ dataElement.value }}</a>
+      </div>
     </div>
   </div>
-  <div id="about-description">
+  <div *ngIf="description" class="wrapper" id="about-description">
     <p>
-      {{ description }}
+      {{ description.value }}
     </p>
   </div>
 </div>

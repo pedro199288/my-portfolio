@@ -13,6 +13,7 @@ html {
     padding: 0;
     font-family: 'Roboto', sans-serif;
     font-size: 1.6rem;
+    box-sizing: border-box;
 }
 
 li {
@@ -25,6 +26,15 @@ h2 {
     font-weight: bold;
     text-align: center;
     color: #333;
+}
+
+.section {
+    padding: 2rem 0;
+}
+
+h2.section-title {
+    font-size: 2.4rem;
+    padding: 3rem 0;
 }
 
 .wrapper {
@@ -46,6 +56,10 @@ h2 {
 @media only screen and (min-width: 720px) {
     h2 {
         font-size: 4rem;
+    }
+
+    h2.section-title {
+        font-size: 3rem;
     }
 }
 
@@ -163,12 +177,17 @@ h2 {
 /* About */
 #about {
     display: block;
+    background-color: #eee;
 }
 
 #about-data {
     display: flex;
     justify-content: space-around;
-    margin: 3rem;
+}
+
+.div-side {
+    max-width: 40rem;
+    width: 40%;
 }
 
 .content-to-right {
@@ -177,4 +196,80 @@ h2 {
 
 .content-to-left {
     text-align: left;
+}
+
+#about-description {
+    max-width: 80rem;
+    margin: 6rem auto;
+}
+
+#about-data-item h3 {
+
+}
+
+#about-data-item p {
+    
+}
+
+/* Skills */
+#skill-data {
+    display: flex;
+    justify-content: space-around;
+}
+
+#skills-grid {
+    display: grid;
+    max-width: 60rem;
+    margin: 3rem auto;
+    grid-template-columns: 40% 40%;
+    grid-template-rows: repeat(3, 1fr);
+    
+    grid-row-gap: 1.5em;
+    justify-content: space-evenly;
+}
+
+.div-progress-bar {
+    margin: 15px 0;
+    padding: 2px;
+}
+  
+.progress {
+    position: relative;
+    background: #FFF;
+    border-radius: 20px;
+    border: solid #54efa5 1px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+  
+div.div-progress-bar .progress span {
+    position: absolute;
+    text-align: center;
+    font-size: 12px;
+    font-weight: normal;
+    display: block;
+    width: 100%;
+    top: -1px;
+    height: 14px;
+}
+  
+.progress-bar {
+    height: 12px;
+    background-color: #3cae6c;
+    border-radius: 25px;
+    transition: 0.4s linear;
+    transition-property: width, background-color;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+}
+  
+.progress-striped .progress-bar {
+    background-color: #83f3be;
+    background-image: linear-gradient(45deg, #54efa5 25%, transparent 25%, transparent 50%, #54efa5 50%, #54efa5 75%, transparent 75%, transparent);
 }

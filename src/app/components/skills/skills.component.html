@@ -1,0 +1,11 @@
+<div class="wrapper">
+    <h2 class="section-title">{{ 'my skills' | uppercase }}</h2>
+    <div id="skills-grid" class="wrapper">         
+        <skill 
+            *ngFor="let skill of skills"
+            [skill]="skill" 
+            class="skills-data-item">
+            <!-- TODO: terminar el componente skill con su h3, etc -->
+        </skill>
+    </div>
+</div>

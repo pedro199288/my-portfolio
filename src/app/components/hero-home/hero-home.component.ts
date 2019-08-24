@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { personalData } from '../../services/data';
-import { element } from 'protractor';
+import { Helper } from '../../services/helper';
 
 @Component({
   selector: 'hero-home',
@@ -8,40 +8,20 @@ import { element } from 'protractor';
   styleUrls: ['./hero-home.component.css']
 })
 export class HeroHomeComponent implements OnInit {
-  // public personalData: object;
-  public firstName: string;
-  public lastName: string;
-  public shortDescription: string;
-  public valuesIWant : string[];
+  public firstName: object;
+  public lastName: object;
+  public shortDescription: object;
+  public dataToShow : string[];
+  public personalData: object[];
 
   constructor() {
-    // this.firstName = personalData.firstName;
-    // this.lastName = personalData.lastName;
-    // this.shortDescription = personalData.shortDescription;
-    this.valuesIWant = [
-      'firstname',
-      'lastname',
-      'shortDescription'
-    ];
+    this.personalData = personalData;
+    this.firstName = Helper.fetchDataByKey('firstName', personalData);
+    this.lastName = Helper.fetchDataByKey('lastName', personalData);
+    this.shortDescription = Helper.fetchDataByKey('shortDescription', personalData);
   }
 
   ngOnInit() {
-    var arrayData = [];
-    arrayData.push( personalData.find(element => this.valuesIWant.includes(element.key) ) );
-    // TODO: Arreglar todo este lio
-    console.log(arrayData);
 
-    this.firstName = personalData.firstName;
-    this.lastName = personalData.lastName;
-    this.shortDescription = personalData.shortDescription;
   }
-
 }
-
-/**
- * Looks for an object inside of an array that has the key -> value pairs passed in params
- */
-function findObjectOnArray(key, value) {
-
-}
-
