@@ -1,6 +1,11 @@
 // TODO: Aquí se creará algún servicio para recuperar datos del backend, de momento pongo arrays con los valores
 export const personalData = [
     {
+        key     : 'fullname',
+        text    : 'full name',
+        value   : 'Pedro Monteagudo Jiménez'
+    },
+    {
         key     : 'firstName',
         text    : 'first name',
         value   : 'Pedro'
@@ -29,6 +34,11 @@ export const personalData = [
         key     : 'birthPlace',
         text    : 'birthplace',
         value   : 'Albacete (Spain)'
+    },
+    {
+        key     : 'hobbies',
+        text    : 'hobbies',
+        value   : 'Coding, Basketball, Gym, Videogames'
     },
     {
         key     : 'address',

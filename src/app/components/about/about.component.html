@@ -1,15 +1,16 @@
 <div class="wrapper">
-  <h2 class="section-title">{{ 'about' | uppercase }}</h2>
+  <h2 class="section-title">about me</h2>
   <div id="about-data">
     <div class="div-side content-to-right">
       <div *ngFor="let dataElement of dataLeft" class="about-data-item">
-        <h3>{{ dataElement.text | titlecase }}</h3>
+        <h3>{{ dataElement.text }}</h3>
+        <!-- TODO: change this to show a date from db formated with angular pipe <p *ngIf="dataElement.key == 'birthDay'">{{ dataElement.value | date }}</p> -->
         <p>{{ dataElement.value }}</p>
       </div>
     </div>
     <div class="div-side content-to-left">
       <div *ngFor="let dataElement of dataRight" class="about-data-item">
-        <h3>{{ dataElement.text | titlecase }}</h3>
+        <h3>{{ dataElement.text }}</h3>
         <p *ngIf="!dataElement.link">{{ dataElement.value }}</p>
         <a target="_blank" *ngIf="dataElement.link" href="{{ dataElement.value }}">{{ dataElement.value }}</a>
       </div>
