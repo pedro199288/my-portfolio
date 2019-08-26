@@ -1,0 +1,53 @@
+<div class="wrapper">
+  <h2 class="section-title">work experience</h2>
+  <div class="experience-items-wrapper">
+
+      <experience-item 
+        *ngFor="let exp_item of experience;let i = index" 
+        [exp_item]="exp_item" 
+        [i]="i" 
+        [ngClass]="{'experience-item': true, 'reverse': i % 2 == 1}">
+      </experience-item>
+
+    
+
+    <!-- <div class="experience-item reverse">
+      <div class="rounded-box experience-description content-to-left">
+        <h4>insomnia comunicación</h4>
+        <h3>Full Stack Web Developer</h3>
+        <p>Sit esse aliquip tempor sunt incididunt ex nulla deserunt non qui. Eiusmod irure anim nisi ea et aliquip consectetur elit adipisicing labore pariatur fugiat aliquip elit.</p>
+      </div>
+
+      <div class="rounded-box experience-date">
+        2018 - till today
+      </div>
+    </div>
+
+    <div class="experience-item">
+        <div class="rounded-box experience-description content-to-right">
+          <h4>insomnia comunicación</h4>
+          <h3>Full Stack Web Developer</h3>
+          <p>Sit esse aliquip tempor sunt incididunt ex nulla deserunt non qui. Eiusmod irure anim nisi ea et aliquip consectetur elit adipisicing labore pariatur fugiat aliquip elit.</p>
+        </div>
+  
+        <div class="rounded-box experience-date">
+          2018 - till - today
+        </div>
+      </div>
+  
+      <div class="experience-item reverse">
+        <div class="rounded-box experience-description content-to-left">
+          <h4>insomnia comunicación</h4>
+          <h3>Full Stack Web Developer</h3>
+          <p>Sit esse aliquip tempor sunt incididunt ex nulla deserunt non qui. Eiusmod irure anim nisi ea et aliquip consectetur elit adipisicing labore pariatur fugiat aliquip elit.</p>
+        </div>
+  
+        <div class="rounded-box experience-date">
+          2018 till - today
+        </div>
+      </div>
+     -->
+  
+
+  </div>
+</div>

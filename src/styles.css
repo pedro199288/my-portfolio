@@ -1,11 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+/* Imports */
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Roboto:400,500,700&display=swap");
+
 /* variables */
 :root {
     --main-green: #7BFF9E;
 }
 
-/* Imports */
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Roboto:400,500,700&display=swap");
 
 /* Generals */
 html {
@@ -49,6 +50,7 @@ h2.section-title {
     width: 100%;
     max-width: 100rem;
     margin: 0 auto;
+    padding: 0 5px;
 }
 
 .bg-gradient {
@@ -59,6 +61,14 @@ h2.section-title {
 
 .rad-gradient-white {
     background: radial-gradient(rgba(255, 255, 255, 0.90), rgba(255, 255, 255, 0.95) );
+}
+
+.rounded-box {
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
 }
 
 @media only screen and (min-width: 720px) {
@@ -297,4 +307,130 @@ h2.section-title {
   
 .progress .progress-bar {
     background-color: #7BFF9E;
+}
+
+
+/* experience */
+#experience {
+    background-color: #EEEEEE;
+}
+
+.experience-item {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 5rem;
+    margin-bottom: 2rem;
+}
+
+.experience-item.reverse {
+    direction: rtl;
+}
+
+.experience-item.reverse div {
+    direction: ltr;
+}
+
+.experience-item.reverse .experience-description {
+    justify-self: end!important;
+}
+
+
+.experience-item .experience-description {
+    max-width: 45rem;
+    background: rgb(251, 251, 251);
+    padding: 2rem 3.5rem;
+    position: relative;
+}
+
+.experience-item .experience-description {
+    justify-self: end;
+}
+
+.experience-item.reverse .experience-description {
+    justify-self: start;
+}
+
+
+.experience-item .experience-description::before {
+    content: '';
+    position: absolute;
+    width: 0rem;
+    height: 110%;
+    top: 3rem;
+    border: 0.2rem solid;
+    border-image: linear-gradient(#777777, #777777) 1;
+}
+
+.experience-item:last-of-type .experience-description::before {
+    border-image: linear-gradient(#777777a9, #7777772d 30%, #77777700 85%) 1!important;
+}
+
+.experience-item .experience-description::before {
+    right: -3rem;
+}
+
+.experience-item.reverse .experience-description::before {
+    left: -2.5rem;
+}
+
+.experience-item .experience-description::after {
+    content: '';
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: var(--main-green);
+    border-radius: 2.5rem;
+    -webkit-border-radius: 2.5rem;
+    -moz-border-radius: 2.5rem;
+    -ms-border-radius: 2.5rem;
+    -o-border-radius: 2.5rem;
+    top: 2.2rem;
+}
+
+.experience-item .experience-description::after {
+    right: -3.55rem;
+}
+
+.experience-item.reverse .experience-description::after {
+    left: -3rem;
+}
+
+.experience-item .experience-description h4 {
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.experience-item .experience-description h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color:  var(--main-green);
+    font-weight: normal;
+}
+
+.experience-item .experience-description p {
+   color: #777777;
+}
+
+.experience-date {
+    width: fit-content;
+    height: fit-content;
+    max-width: 28rem;
+    background-color: #333;
+    color: #ffffff;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    padding: 1.5rem 3rem
+}
+
+/* education */
+#education {
+    background-color: #777777;
+}
+
+#education .section-title {
+    color: #fff;
 }

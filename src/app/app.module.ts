@@ -8,6 +8,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { AboutComponent } from './components/about/about.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { SkillComponent } from './components/skill/skill.component';
+import { ExperienceComponent } from './components/experience/experience.component';
+import { ExperienceItemComponent } from './components/experience-item/experience-item.component';
+import { EducationComponent } from './components/education/education.component';
+import { EducationItemComponent } from './components/education-item/education-item.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,11 @@ import { SkillComponent } from './components/skill/skill.component';
     NavbarComponent,
     AboutComponent,
     SkillsComponent,
-    SkillComponent
+    SkillComponent,
+    ExperienceComponent,
+    ExperienceItemComponent,
+    EducationComponent,
+    EducationItemComponent
   ],
   imports: [
     BrowserModule,

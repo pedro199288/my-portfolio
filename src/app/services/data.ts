@@ -77,7 +77,7 @@ export const skills = [
     {
         key     : 'javascript',
         text    : 'JavaScript',
-        value   : 70
+        value   : 75
     },
     {
         key     : 'php',
@@ -91,7 +91,40 @@ export const skills = [
     },
     {
         key     : 'nosql',
-        text    : 'noSQL',
+        text    : 'NoSQL',
         value   : 40
     }
+];
+
+export const experience = [
+    {
+        key     : 'insomnia',
+        date: {
+            start: '2018-08-01',
+            end: '',
+        },
+        company    : 'Insomnia Comunicación',
+        rol   : 'Junior Full Stack Web Developer',
+        description: 'Lorem enim amet ea labore proident labore aliqua amet non. Elit culpa sint eiusmod labore officia consequat tempor anim occaecat ea reprehenderit in. Enim minim do adipisicing minim. Ipsum et aliqua nisi id nisi laborum. Ex aliqua culpa eu velit mollit.'
+    },
+    {
+        key     : 'insomnia',
+        date: {
+            start: '2020-08-01',
+            end: '',
+        },
+        company    : 'Insomnia Comunicación',
+        rol   : 'Junior Full Stack Web Developer',
+        description: 'Lorem enim amet ea labore proident labore aliqua amet non. Elit culpa sint eiusmod labore officia consequat tempor anim occaecat ea reprehenderit in. Enim minim do adipisicing minim. Ipsum et aliqua nisi id nisi laborum. Ex aliqua culpa eu velit mollit.'
+    },
+    {
+        key     : 'insomnia',
+        date: {
+            start: '2019-08-01',
+            end: '',
+        },
+        company    : 'Insomnia Comunicación',
+        rol   : 'Junior Full Stack Web Developer',
+        description: 'Lorem enim amet ea labore proident labore aliqua amet non. Elit culpa sint eiusmod labore officia consequat tempor anim occaecat ea reprehenderit in. Enim minim do adipisicing minim. Ipsum et aliqua nisi id nisi laborum. Ex aliqua culpa eu velit mollit.'
+    },
 ]
