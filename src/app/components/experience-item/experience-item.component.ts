@@ -7,7 +7,6 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ExperienceItemComponent implements OnInit {
   @Input('exp_item') exp_item: object;
-  @Input('i') i: number;
 
   constructor() { }
 

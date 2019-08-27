@@ -1,3 +1,10 @@
-<p>
-  education-item works!
-</p>
+<div class="rounded-box">
+  <span>{{ edu_item.date + 'algo' }}</span>
+  <hr>
+  <div>
+    <h3><fa-icon [icon]="faUniversity"></fa-icon>{{ edu_item.center + 'algo' }}</h3>
+  </div>
+  <div>
+    <fa-icon [icon]="faGraduationCap"></fa-icon><a href="{{ edu_item.link }}">{{ edu_item.name + 'algo' }}</a>
+  </div>
+</div>

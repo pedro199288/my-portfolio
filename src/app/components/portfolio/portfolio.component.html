@@ -1,0 +1,21 @@
+<div class="wrapper">
+  <h2 class="section-title">portfolio</h2>
+  <div class="portfolio-grid">
+    <div
+      *ngFor="let port_item of portfolio" 
+      [ngClass]="{'port-item': true}">
+      <div class="img-wrapper">
+        <div class="bg-buttons">
+          <a href="#" class="btn btn-primary">See more</a>
+          <a href="#" class="btn btn-secondary">Go to website</a>
+        </div>
+        <img src="../../../assets/images/escape_room.JPG"> 
+      </div>
+      <!-- TODO: optimizar imagen -->
+      <a href=""><h4>Experiencity Escape Room</h4></a>
+      <p>
+        Booking system for a escaperoom in Madrid: "Experiencity".
+      </p>
+    </div>
+  </div>
+</div>

@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { HeroHomeComponent } from './components/hero-home/hero-home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AboutComponent } from './components/about/about.component';
@@ -12,6 +14,8 @@ import { ExperienceComponent } from './components/experience/experience.componen
 import { ExperienceItemComponent } from './components/experience-item/experience-item.component';
 import { EducationComponent } from './components/education/education.component';
 import { EducationItemComponent } from './components/education-item/education-item.component';
+import { PortfolioComponent } from './components/portfolio/portfolio.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -24,11 +28,14 @@ import { EducationItemComponent } from './components/education-item/education-it
     ExperienceComponent,
     ExperienceItemComponent,
     EducationComponent,
-    EducationItemComponent
+    EducationItemComponent,
+    PortfolioComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

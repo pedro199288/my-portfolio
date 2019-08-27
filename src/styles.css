@@ -5,6 +5,7 @@
 /* variables */
 :root {
     --main-green: #7BFF9E;
+    --secondary-green: rgb(59, 204, 98);
 }
 
 
@@ -69,6 +70,47 @@ h2.section-title {
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
+}
+
+.btn {
+    display: block;
+    margin: 2rem auto;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    font-size: 1.6rem;
+    text-decoration: none;
+    text-transform: none;
+    border: 0.2rem solid;
+    padding: 0.8rem 0;
+    width: 18rem;
+    border-radius: 5rem;
+    -webkit-border-radius: 5rem;
+    -moz-border-radius: 5rem;
+    -ms-border-radius: 5rem;
+    -o-border-radius: 5rem;
+}
+
+.btn-primary {
+    color: #ffffff;
+    background-color: var(--secondary-green);
+    border-color: var(--secondary-green);
+}
+
+.btn-primary:hover {
+    filter: brightness(110%);
+    -webkit-filter: brightness(110%);
+}
+
+.btn-secondary {
+    color: #333;
+    border-color: var(--secondary-green);
+    background-color: #ffffffc9;
+}
+
+.btn-secondary:hover {
+    filter: brightness(110%);
+    -webkit-filter: brightness(110%);
 }
 
 @media only screen and (min-width: 720px) {
@@ -431,6 +473,136 @@ h2.section-title {
     background-color: #777777;
 }
 
+.education-items-grid {
+    margin: 0 auto;
+    width: 90%;
+    max-width: 90rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 4rem;
+    grid-row-gap: 3rem;
+}
+
 #education .section-title {
+    color: #fff;
+}
+
+.education-item .rounded-box {
+    display: block;
+    padding: 1.3rem 3rem;
+    background-color: #ffffff;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.education-item .rounded-box div {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.education-item span {
+    display: inline-block;
+    color: #333;
+    font-style: italic;
+    font-size: 1.8rem;
+    margin-bottom: 0.6rem;
+    margin-left: 1rem;
+}
+
+.education-item hr {
+    border: 1px solid var(--main-green);
+    margin-bottom: 1rem;
+}
+
+.education-item h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: capitalize;
+    margin-bottom: 1rem;
+}
+
+.education-item a {
+    font-size: 1.6rem;
+    text-decoration: none;
+    color: #777777;
+    margin-left: -0.6rem;
+}
+
+.education-item a:hover {
+    text-decoration: underline;
+}
+
+.education-item svg path {
+    color: var(--main-green);
+}
+
+.svg-inline--fa {
+    font-size: 3rem;
+    margin-right: 1.5rem;
+}
+
+/* portfolio */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
+    width: 100%;
+    padding: 0.5rem
+}
+
+.port-item .img-wrapper {
+    position: relative;
+}
+
+.port-item .img-wrapper .bg-buttons {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 15, 15, 0.9);
+}
+
+.port-item:hover .bg-buttons {
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.port-item img {
+    width: 100%;
+}
+
+.port-item > a{
+    text-decoration: none;
+}
+
+.port-item > a:hover {
+    text-decoration: underline;
+}
+
+.port-item h4 {
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: bold;
+    font-style: 'Roboto', sans-serif;
+    margin: 0.8rem 0
+}
+
+.port-item p {
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: normal;
+    font-style: 'Open Sans', sans-serif;
+    margin: 0.5rem 0;
+    color: #777777;
+}
+
+
+/* contact */
+#contact {
+    background: #777;
+}
+#contact h2 {
     color: #fff;
 }

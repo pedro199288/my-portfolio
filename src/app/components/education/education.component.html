@@ -1,6 +1,12 @@
 <div class="wrapper">
   <h2 class="section-title">education</h2>
-</div>
-<div class="education-items-grid">
-  <education-item></education-item>
+  <div class="education-items-grid">
+    <education-item
+      *ngFor="let edu_item of education" 
+      [edu_item]="edu_item"
+      [ngClass]="{'education-item': true}">
+      
+
+  </education-item>
+  </div>
 </div>
