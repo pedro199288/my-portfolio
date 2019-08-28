@@ -113,6 +113,24 @@ h2.section-title {
     -webkit-filter: brightness(110%);
 }
 
+input[type='text'],
+input[type='password'],
+input[type='select'],
+input[type='email'],
+textarea {
+    background: #fff;
+    border: none;
+    padding: 1rem;
+    font-size: 1.8rem;
+    width: 100%;
+}
+
+textarea {
+    min-height: 15rem;
+    max-height: 40rem;
+    resize: vertical;
+}
+
 @media only screen and (min-width: 720px) {
     h2 {
         font-size: 4rem;
@@ -200,17 +218,15 @@ h2.section-title {
 
 /* Navbar */
 #navbar {
-    height: 7rem;
+    height: 5rem;
     background-color: #7BFF9E;
     display: flex;
     align-items: center;
     position: relative;
 }
 
-#navbar ul {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+#navbar .nav-desktop ul {
+    display: none;
 }
 
 #navbar li a {
@@ -226,12 +242,83 @@ h2.section-title {
     color: #000;
 }
 
+#navbar #btn-menu {
+    margin-right: 1rem;
+    text-align: right;
+}
 
+#navbar #btn-menu:hover {
+    cursor: pointer;
+}
+
+.menu-hidden {
+    left: -28rem;
+    opacity: 0;
+}
+
+.menu-visible {
+    left: 0;
+    right: auto;
+    opacity: 1;
+}
+
+#navbar .nav-mobile {
+    top: 0;
+    display: block;
+    position: fixed;
+    width: 22rem;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.9);
+    z-index: 5;
+    transition: all ease-in-out 0.3s;
+    -webkit-transition: all ease-in-out 0.3s;
+    box-shadow: -2px 0px 10px 0px rgb(92, 92, 92);
+}
+
+#navbar .nav-mobile nav {
+    position: relative;
+    top: 8rem;
+    display: block;
+    width: 22rem;
+    padding: 2rem;
+}
+
+#navbar .nav-mobile ul li {
+    position: relative;
+    margin-left: 10px;
+    margin-bottom: 0px;
+}
+
+#navbar .nav-mobile ul li a {
+    position: relative;
+    line-height: 5rem;
+    color: #333;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    left: 0px;
+    transition: ease-in-out all 0.1s;
+}
+
+#navbar .nav-mobile ul li a:hover {
+    color:  var(--secondary-green);
+    left: 5px;
+}
 
 @media only screen and (min-width: 720px) {
     #navbar {
-        height: 9rem;
+        height: 7rem;
     } 
+
+    #navbar .nav-desktop ul {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    #navbar #btn-menu {
+        display: none;
+    }
 }
 
 /* About */
@@ -243,11 +330,12 @@ h2.section-title {
 #about-data {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .div-side {
     max-width: 40rem;
-    width: 40%;
+    width: 90%;
 }
 
 .content-to-right {
@@ -255,6 +343,10 @@ h2.section-title {
 }
 
 .content-to-left {
+    text-align: left;
+}
+
+.div-side.content-to-right {
     text-align: left;
 }
 
@@ -269,13 +361,25 @@ h2.section-title {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
     color: #777;
+    word-wrap: break-word;
 }
 
 #about-description {
+    width: 90%;
     max-width: 70rem;
     margin: 6rem auto;
     text-align: center;
     color: #333;
+}
+
+@media only screen and (min-width: 720px) {
+    .div-side {        
+        width: 30%;
+    }
+
+    .div-side.content-to-right {
+        text-align: right;
+    }
 }
 
 /* Skills */
@@ -287,18 +391,16 @@ h2.section-title {
 #skills-grid {
     display: grid;
     margin: 3rem auto;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(3, 1fr);
-    grid-auto-flow: column;
+    max-width: 90%;
+    grid-template-columns: repeat(auto-fit, minmax(100%, 1fr ));
     grid-row-gap: 1.5rem;
-    justify-content: space-between;
     justify-items: center;
 }
 
 .skills-data-item {
     margin: 0.5rem 0;
     width: 100%;
-    max-width: 34rem;
+    max-width: 32rem;
 }
 
 .skills-data-item p {
@@ -352,6 +454,13 @@ h2.section-title {
 }
 
 
+@media only screen and (min-width: 720px) {
+    #skills-grid {
+        max-width: 90rem;
+        grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr ));
+    }
+}
+
 /* experience */
 #experience {
     background-color: #EEEEEE;
@@ -359,83 +468,28 @@ h2.section-title {
 
 .experience-item {
     display: grid;
+    direction: ltr;
+    justify-content: center;
+    justify-items: center;
     width: 100%;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax( 320px, 2fr));
     grid-column-gap: 5rem;
     margin-bottom: 2rem;
 }
 
-.experience-item.reverse {
-    direction: rtl;
+.experience-item .rounded-box {
+    text-align: left;
 }
 
-.experience-item.reverse div {
+.experience-item div {
     direction: ltr;
 }
 
-.experience-item.reverse .experience-description {
-    justify-self: end!important;
-}
-
-
 .experience-item .experience-description {
-    max-width: 45rem;
+    max-width: 90%;
     background: rgb(251, 251, 251);
     padding: 2rem 3.5rem;
     position: relative;
-}
-
-.experience-item .experience-description {
-    justify-self: end;
-}
-
-.experience-item.reverse .experience-description {
-    justify-self: start;
-}
-
-
-.experience-item .experience-description::before {
-    content: '';
-    position: absolute;
-    width: 0rem;
-    height: 110%;
-    top: 3rem;
-    border: 0.2rem solid;
-    border-image: linear-gradient(#777777, #777777) 1;
-}
-
-.experience-item:last-of-type .experience-description::before {
-    border-image: linear-gradient(#777777a9, #7777772d 30%, #77777700 85%) 1!important;
-}
-
-.experience-item .experience-description::before {
-    right: -3rem;
-}
-
-.experience-item.reverse .experience-description::before {
-    left: -2.5rem;
-}
-
-.experience-item .experience-description::after {
-    content: '';
-    position: absolute;
-    width: 1.5rem;
-    height: 1.5rem;
-    background-color: var(--main-green);
-    border-radius: 2.5rem;
-    -webkit-border-radius: 2.5rem;
-    -moz-border-radius: 2.5rem;
-    -ms-border-radius: 2.5rem;
-    -o-border-radius: 2.5rem;
-    top: 2.2rem;
-}
-
-.experience-item .experience-description::after {
-    right: -3.55rem;
-}
-
-.experience-item.reverse .experience-description::after {
-    left: -3rem;
 }
 
 .experience-item .experience-description h4 {
@@ -456,16 +510,109 @@ h2.section-title {
 }
 
 .experience-date {
-    width: fit-content;
-    height: fit-content;
+    grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     max-width: 28rem;
+    height: 4.8rem;
     background-color: #333;
     color: #ffffff;
     text-transform: uppercase;
     text-align: center;
     font-size: 1.8rem;
     font-weight: bold;
-    padding: 1.5rem 3rem
+    padding: 1.5rem 3rem;
+    margin-bottom: 1.5rem;
+}
+
+/* sytles of .reverse class and related css with the effect will show only if screen width > 715px (when grid with 2 cols) */
+@media only screen and (min-width: 717px) {
+    .experience-item {
+        justify-items: start;
+    }
+
+    .experience-date {
+        grid-column-start: auto;
+        grid-column-end: auto;
+        grid-row-start: auto;
+        grid-row-end: auto;
+    }
+
+    .experience-item .rounded-box {
+        text-align: right;
+    }
+
+    .experience-item.reverse .rounded-box {
+        text-align: left;
+    }
+    
+
+    .experience-item .experience-description::before {
+        content: '';
+        position: absolute;
+        width: 0rem;
+        height: 110%;
+        top: 3rem;
+        border: 0.2rem solid;
+        border-image: linear-gradient(#777777, #777777) 1;
+    }
+
+    .experience-item:last-of-type .experience-description::before {
+        border-image: linear-gradient(#777777a9, #7777772d 30%, #77777700 85%) 1!important;
+    }
+
+    .experience-item .experience-description::before {
+        right: -3rem;
+    }
+
+    .experience-item .experience-description::after {
+        content: '';
+        position: absolute;
+        width: 1.5rem;
+        height: 1.5rem;
+        background-color: var(--main-green);
+        border-radius: 2.5rem;
+        -webkit-border-radius: 2.5rem;
+        -moz-border-radius: 2.5rem;
+        -ms-border-radius: 2.5rem;
+        -o-border-radius: 2.5rem;
+        top: 2.2rem;
+    }
+
+    .experience-item .experience-description::after {
+        right: -3.55rem;
+    }
+
+    .experience-item .experience-description {
+        justify-self: end;
+    }
+
+    .experience-item.reverse {
+        direction: rtl;
+    }
+    
+    .experience-item.reverse div {
+        direction: ltr;
+    }
+    
+    .experience-item.reverse .experience-description {
+        justify-self: end!important;
+    }
+
+    .experience-item.reverse .experience-description {
+        justify-self: start;
+    }
+
+    .experience-item.reverse .experience-description::before {
+        left: -2.5rem;
+    }
+
+    .experience-item.reverse .experience-description::after {
+        left: -3rem;
+    }
 }
 
 /* education */
@@ -478,9 +625,11 @@ h2.section-title {
     width: 90%;
     max-width: 90rem;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    margin: 0 auto;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(28rem, 40rem));
     grid-column-gap: 4rem;
-    grid-row-gap: 3rem;
+    grid-row-gap: 2rem;
 }
 
 #education .section-title {
@@ -544,10 +693,12 @@ h2.section-title {
 /* portfolio */
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    margin: 0 auto;
+    grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+    justify-content: center;
     grid-column-gap: 2rem;
     grid-row-gap: 2rem;
-    width: 100%;
+    width: 95%;
     padding: 0.5rem
 }
 
@@ -564,9 +715,9 @@ h2.section-title {
 }
 
 .port-item:hover .bg-buttons {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr;
     align-content: center;
-    flex-wrap: wrap;
 }
 
 .port-item img {
@@ -605,4 +756,19 @@ h2.section-title {
 }
 #contact h2 {
     color: #fff;
+}
+
+.form {
+    width: 95%;
+    max-width: 490px;
+    margin: 3rem auto;
+}
+
+.form-item {
+    width: 100%;
+    margin: 2rem auto;
+}
+
+#contact .form input[type='submit'] {
+    text-transform: uppercase;
 }

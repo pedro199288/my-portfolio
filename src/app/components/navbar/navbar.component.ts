@@ -7,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
   public links: any[]; // FIXME: It gave error with objetc[] type
+  public showing: boolean;
 
   constructor() {
+    this.showing = false;
     this.links = [
       {
         "name"    : 'home', // TODO: Cargar los textos con un service en español o inglés según corresponda,
@@ -41,6 +43,10 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     // Filter those links which have active = true
     this.links = this.links.filter(link => link.active );
+  }
+
+  toggleMenu() {
+    this.showing = !this.showing;
   }
 
 }

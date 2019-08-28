@@ -1,5 +1,5 @@
 
-<div class="rounded-box experience-description content-to-right">
+<div class="rounded-box experience-description">
   <h4>{{ exp_item.company }}</h4>
   <h3>{{ exp_item.rol }}</h3>
   <p>{{ exp_item.description }}</p>
@@ -8,7 +8,6 @@
 <div class="rounded-box experience-date" *ngIf="exp_item.date.end != ''">
     {{ exp_item.date.start + ' - '+ exp_item.date.end }}
 </div>
-
 <div class="rounded-box experience-date" *ngIf="exp_item.date.end == ''">
     {{ exp_item.date.start + ' - till today' }}
 </div>

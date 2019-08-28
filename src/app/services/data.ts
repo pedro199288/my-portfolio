@@ -160,6 +160,16 @@ export const education = [
         rol   : 'Junior Full Stack Web Developer',
         description: 'Lorem enim amet ea labore proident labore aliqua amet non. Elit culpa sint eiusmod labore officia consequat tempor anim occaecat ea reprehenderit in. Enim minim do adipisicing minim. Ipsum et aliqua nisi id nisi laborum. Ex aliqua culpa eu velit mollit.'
     },
+    {
+        key     : 'insomnia',
+        date: {
+            start: '2019-08-01',
+            end: '',
+        },
+        company    : 'Insomnia Comunicación',
+        rol   : 'Junior Full Stack Web Developer',
+        description: 'Lorem enim amet ea labore proident labore aliqua amet non. Elit culpa sint eiusmod labore officia consequat tempor anim occaecat ea reprehenderit in. Enim minim do adipisicing minim. Ipsum et aliqua nisi id nisi laborum. Ex aliqua culpa eu velit mollit.'
+    },
 ]
 
 
@@ -177,7 +187,7 @@ export const portfolio = [
     {
         key     : 'insomnia',
         date: {
-            start: '2020-08-01',
+            start: '2018-08-01',
             end: '',
         },
         company    : 'Insomnia Comunicación',

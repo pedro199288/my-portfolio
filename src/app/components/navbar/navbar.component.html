@@ -1,5 +1,16 @@
-<nav class="wrapper">
+<nav class="wrapper nav-desktop">
   <ul>
     <li *ngFor="let link of links"><a href="{{ link.route }}"> {{ link.name }} </a></li>
   </ul>
+  <div id="btn-menu" (click)="toggleMenu()">
+    <img src="../../../assets/images/burguer-menu.png" alt="menu-button">
+  </div>  
 </nav>
+
+<div [ngClass]="{'nav-mobile': true, 'menu-visible': showing, 'menu-hidden': !showing}">
+ <nav>
+    <ul>
+      <li *ngFor="let link of links"><a href="{{ link.route }}"> {{ link.name }} </a></li>
+    </ul>
+ </nav>
+</div>
