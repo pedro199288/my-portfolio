@@ -27,7 +27,7 @@ li {
     list-style: none;
 }
 
-h2 {
+h2,h1 {
     font-family: 'Open Sans', sans-serif;
     font-size: 3rem;
     font-weight: bold;
@@ -132,7 +132,7 @@ textarea {
 }
 
 @media only screen and (min-width: 720px) {
-    h2 {
+    h2,h1 {
         font-size: 4rem;
     }
 
@@ -158,11 +158,12 @@ textarea {
     z-index: 2;
 }
 
-#hero-home h2:last-of-type {
+#hero-home h1:last-of-type {
     font-weight: normal;
     font-size: 2.2rem;
     color: #777;
     margin: 1.8rem;
+    text-align: center;
 }
 
 .btn-hero {
@@ -204,7 +205,7 @@ textarea {
         font-size: 4rem;
     }
 
-    #hero-home h2:last-of-type {
+    #hero-home h1:last-of-type {
         font-size: 2.8rem;
     }
     
@@ -370,6 +371,10 @@ textarea {
     margin: 6rem auto;
     text-align: center;
     color: #333;
+}
+
+#about-description p {
+    margin: 1rem;
 }
 
 @media only screen and (min-width: 720px) {
@@ -690,6 +695,34 @@ textarea {
     margin-right: 1.5rem;
 }
 
+.education-item span.clarification-wrapper {
+    cursor: pointer;
+    position: relative;
+}
+
+.education-item span.clarification-wrapper svg path {
+    color: #777;
+    font-size: 1rem;
+}
+
+.education-item span.clarification-wrapper .svg-inline--fa {
+    font-size: 1.6rem;
+}
+
+.education-item span.clarification-wrapper .clarification {
+    display: none;
+}
+
+.education-item span.clarification-wrapper:hover .clarification {
+    position: absolute;
+    left: -10rem;
+    background: #eeeeee;
+    padding: 0.5rem;
+    border: 1px solid #dddddd;
+    max-width: 30rem;
+    display: block;
+}
+
 /* portfolio */
 .portfolio-grid {
     display: grid;
@@ -754,8 +787,17 @@ textarea {
 #contact {
     background: #777;
 }
+
 #contact h2 {
     color: #fff;
+}
+
+#contact p { 
+    color: #fff;
+    width: 50rem;
+    max-width: 90%;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .form {

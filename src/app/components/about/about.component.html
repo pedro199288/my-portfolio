@@ -16,9 +16,5 @@
       </div>
     </div>
   </div>
-  <div *ngIf="description" class="wrapper" id="about-description">
-    <p>
-      {{ description.value }}
-    </p>
-  </div>
+  <div *ngIf="description" class="wrapper" id="about-description" [innerHTML]="description.value"></div>
 </div>

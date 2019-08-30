@@ -17,16 +17,18 @@ export class ExperienceComponent implements OnInit {
   ngOnInit() {
     var startDateA, startDateB;
 
-    this.experience.sort( (a, b) => {
+    this.experience.sort((a, b) => {
       startDateA = new Date (a.date.start);
       startDateB = new Date (b.date.start);
-      if ( startDateA > startDateB ){
-        return -1;
-      }
-      if ( startDateA < startDateB ){
-        return 1;
-      }
-      return 0;
+      return startDateA > startDateB ? -1 : (startDateA < startDateB ? 1 : -1 );
+
+      // if ( startDateA > startDateB ){
+      //   return -1;
+      // }
+      // if ( startDateA < startDateB ){
+      //   return 1;
+      // }
+      // return 0;
     });
   }
 }
