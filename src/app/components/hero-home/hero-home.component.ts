@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { personalData } from '../../services/data';
-import { Helper } from '../../services/helper';
+import { Helper } from '../../services/helper.service';
 
 @Component({
   selector: 'hero-home',

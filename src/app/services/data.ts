@@ -23,7 +23,7 @@ export const personalData = [
     {
         key     : 'description',
         text    : 'description',
-        value   : '<p>I am an enthusiastic <strong>Full Stack Web Developer</strong> who really enjoys building new things and learning new stuffs!</p> <p>Currently, I am working in a digital marketing company building  <strong>websites</strong> and  <strong>webapps</strong> with <strong>PHP</strong>, <strong>JavaScript</strong>, <strong>HTML</strong> and <strong>CSS</strong>. Not having enough with that, I am also coding and learning on my leisure time.</p><p>For example, in the short term I plan to get more skilled on <strong>NodeJS</strong> and JavaScript front-end frameworks like <strong>Angular</strong> and <strong>React</strong>. In the long term, I will probably learn about <strong>Python</strong> to see all the things that can be done with it.</p>'
+        value   : '<p>I am an pasionated <strong>Full Stack Web Developer</strong> who really enjoys building new things and learning new stuffs!</p> <p>Currently, I am working in a digital marketing company building  <strong>websites</strong> and  <strong>webapps</strong> with <strong>PHP</strong>, <strong>JavaScript</strong>, <strong>HTML</strong> and <strong>CSS</strong>. Not having enough with that, I am also coding and learning on my leisure time.</p><p>For example, in the short term I plan to get more skilled on <strong>NodeJS</strong> and JavaScript front-end frameworks like <strong>Angular</strong> and <strong>React</strong>. In the long term, I will probably learn about <strong>Python</strong> to see all the things that can be done with it.</p>'
     },
     {
         key     : 'birthDay',
@@ -115,7 +115,7 @@ export const experience = [
         },
         company    : 'My Own Projects',
         rol   : 'Junior Full Stack Web Developer',
-        description: 'I have work on few projects (can be seen in the portfolio section) on my own by the moment, since I haven\'t had enought time due to I am still studying. But I have been able to get enought time to do a bunch of courses about HTML, CSS, JavaScript, MySQL, NodeJS, Angular, MongoDB...'
+        description: 'I have work on few projects (can be seen in the portfolio section) on my own by the moment, since I haven\'t had enought time due to I am still studying. But I have been able to get enought time to do a bunch of courses about HTML, CSS, JavaScript, PHP, MySQL, NodeJS, Angular, MongoDB...'
     }
 ]
 
@@ -180,33 +180,12 @@ export const education = [
 
 export const portfolio = [
     {
-        key     : 'insomnia',
-        date: {
-            start: '2018-08-01',
-            end: '',
-        },
-        company    : 'Insomnia Comunicación',
-        rol   : 'Junior Full Stack Web Developer',
-        description: 'Lorem enim amet ea labore proident labore aliqua amet non. Elit culpa sint eiusmod labore officia consequat tempor anim occaecat ea reprehenderit in. Enim minim do adipisicing minim. Ipsum et aliqua nisi id nisi laborum. Ex aliqua culpa eu velit mollit.'
-    },
-    {
-        key     : 'insomnia',
-        date: {
-            start: '2018-08-01',
-            end: '',
-        },
-        company    : 'Insomnia Comunicación',
-        rol   : 'Junior Full Stack Web Developer',
-        description: 'Lorem enim amet ea labore proident labore aliqua amet non. Elit culpa sint eiusmod labore officia consequat tempor anim occaecat ea reprehenderit in. Enim minim do adipisicing minim. Ipsum et aliqua nisi id nisi laborum. Ex aliqua culpa eu velit mollit.'
-    },
-    {
-        key     : 'insomnia',
-        date: {
-            start: '2019-08-01',
-            end: '',
-        },
-        company    : 'Insomnia Comunicación',
-        rol   : 'Junior Full Stack Web Developer',
-        description: 'Lorem enim amet ea labore proident labore aliqua amet non. Elit culpa sint eiusmod labore officia consequat tempor anim occaecat ea reprehenderit in. Enim minim do adipisicing minim. Ipsum et aliqua nisi id nisi laborum. Ex aliqua culpa eu velit mollit.'
+        key         : 'experiencity-escape-room',
+        name        : 'Experiencity Escape Room',
+        image       : 'escape-room.jpg',
+        company     : 'Insomnia Comunicación',
+        tools       : 'PHP, MySQL, HMTL, CSS, JavaScript and jQuery',
+        description : 'Booking system for a escaperoom in Madrid: "Experiencity".',
+        website     : 'https://experiencitymadrid.com'
     },
 ]

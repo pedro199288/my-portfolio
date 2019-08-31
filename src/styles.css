@@ -237,6 +237,7 @@ textarea {
     font-weight: bold;
     text-decoration: none;
     text-transform: uppercase;
+    cursor: pointer;
 }
 
 #navbar li a:hover {
@@ -650,7 +651,7 @@ textarea {
 
 .education-item .rounded-box div {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -671,7 +672,6 @@ textarea {
 .education-item h3 {
     font-size: 2rem;
     font-weight: bold;
-    text-transform: capitalize;
     margin-bottom: 1rem;
 }
 
@@ -813,4 +813,14 @@ textarea {
 
 #contact .form input[type='submit'] {
     text-transform: uppercase;
+}
+
+#footer {
+    display: block;
+    background: #333;
+}
+
+#footer p {
+    color: #fff;
+    text-align: center;
 }

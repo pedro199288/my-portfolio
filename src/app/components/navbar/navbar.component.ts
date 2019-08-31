@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AboutComponent } from '../about/about.component';
 
 @Component({
   selector: 'navbar',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  public links: any[]; // FIXME: It gave error with objetc[] type
+  public links: any[];
   public showing: boolean;
 
   constructor() {
@@ -15,27 +16,32 @@ export class NavbarComponent implements OnInit {
       {
         "name"    : 'home', // TODO: Cargar los textos con un service en español o inglés según corresponda,
         "active"  : true,
-        "route"   : "poner_ruta"
+        "route"   : "",
+        "reference" : 'hero-home'
       },
       {
         "name"    : 'about',
         "active"  : true,
-        "route"   : "poner_ruta"
-      },
-      {
-        "name"    : 'education',
-        "active"  : true,
-        "route"   : "poner_ruta"
+        "route"   : "home",
+        "reference" : 'about'
       },
       {
         "name"    : 'experience',
         "active"  : true,
-        "route"   : "poner_ruta"
+        "route"   : "experience",
+        "reference" : 'experience'
       },
       {
-        "name"    : 'works',
+        "name"    : 'education',
         "active"  : true,
-        "route"   : "poner_ruta"
+        "route"   : "education",
+        "reference" : 'education'
+      },
+      {
+        "name"    : 'portfolio',
+        "active"  : true,
+        "route"   : "portfolio",
+        "reference" : 'portfolio'
       }
     ];
   }
@@ -47,6 +53,12 @@ export class NavbarComponent implements OnInit {
 
   toggleMenu() {
     this.showing = !this.showing;
+  }
+
+  scrollTo(el: string) {
+    console.log(el);
+    let element = document.getElementById(el);
+    element.scrollIntoView({block: "start", behavior: "smooth"});
   }
 
 }

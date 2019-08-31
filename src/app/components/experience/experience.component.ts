@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { experience } from './../../services/data';
-import { Helper } from  './../../services/helper';
+import { Helper } from  '../../services/helper.service';
 
 @Component({
   selector: 'experience',
@@ -8,7 +8,7 @@ import { Helper } from  './../../services/helper';
   styleUrls: ['./experience.component.css']
 })
 export class ExperienceComponent implements OnInit {
-  public experience: object[];
+  public experience: any[];
   
   constructor() {
     this.experience = experience;

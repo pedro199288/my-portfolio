@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { personalData } from './../../services/data';
-import { Helper } from 'src/app/services/helper';
+import { Helper } from 'src/app/services/helper.service';
 
 @Component({
   selector: 'about',

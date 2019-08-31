@@ -1,0 +1,30 @@
+<navbar id="navbar"></navbar>
+<div id="view-project">
+  FFJAÑLDFJAÑDKJF 
+  ÑKAJDFKL
+  JÑLKASDJF
+
+  KJADÑFLJKLAJSDFJ
+  AKLÑSDJFÑALK
+</div>
+
+<div *ngIf="!user">
+  Cargando...
+</div>
+
+<div *ngIf="user">
+  <img src="{{user.avatar }}" alt="" width="200">
+  <h3>{{user.first_name + ' ' + user.last_name }}</h3>
+
+</div>
+
+<hr>
+<h2>Crear usuario</h2>
+<form #newUser="ngForm" (ngSubmit)="onSubmit(newUser)">
+  <div class="form-item">
+    Nombre: <input type="text" name="name" #name="ngModel" [(ngModel)]="new_user.name" placeholder="name"><br>
+    job: <input type="text" name="job" #job="ngModel" [(ngModel)]="new_user.job"><br>
+  </div>
+
+  <input type="submit" value="guardar">
+</form>
