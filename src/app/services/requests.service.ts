@@ -4,6 +4,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Config } from '../config/config';
 
 @Injectable()
 export class RequestsService{
@@ -12,11 +13,11 @@ export class RequestsService{
     constructor(
         public _http: HttpClient
     ) {
-        this.url = 'https://reqres.in/';
+        this.url = Config.API_URL;
     }
 
-    getUsers(): Observable<any> {
-        return this._http.get(this.url+'api/users/2');
+    getPersonalData(): Observable<any> {
+        return this._http.get(this.url+'personal-data/all');
     }
 
     // Ajax request TODO: TEST: dELETE THIS METHOD, 

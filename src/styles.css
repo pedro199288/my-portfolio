@@ -113,6 +113,18 @@ h2.section-title {
     -webkit-filter: brightness(110%);
 }
 
+.form-item {
+    width: 100%;
+    margin: 2rem auto;
+}
+
+.form-item label {
+    color: #333;
+    font-size: 1.6rem;
+    padding: 0.5rem 0;
+    display: inline-block;
+}
+
 input[type='text'],
 input[type='password'],
 input[type='select'],
@@ -804,11 +816,6 @@ textarea {
     width: 95%;
     max-width: 490px;
     margin: 3rem auto;
-}
-
-.form-item {
-    width: 100%;
-    margin: 2rem auto;
 }
 
 #contact .form input[type='submit'] {

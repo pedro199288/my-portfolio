@@ -1,0 +1,49 @@
+/* variables */
+:root {
+    --main-green: #7BFF9E;
+    --secondary-green: rgb(59, 204, 98);
+}
+
+#editor {
+    color: #333;
+    background: #fff;
+    display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    z-index: 5;
+    border: 1px solid var(--secondary-green);
+    border-top: 4px solid var(--secondary-green);
+    border-radius: 10px;
+    padding: 1rem 2rem;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    width: 60rem;
+    max-width: 40vw;
+    min-width: 28rem;
+    height: 70vh;
+    max-height: 100vh;
+}
+
+#editor.editor-active {
+    display: block;
+    position: fixed;
+}
+
+#editor .box-header {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--secondary-green);
+    margin-bottom: 1rem;
+}
+
+#editor .form input,
+#editor .form textarea {
+    border: 1px solid #ddd;
+}

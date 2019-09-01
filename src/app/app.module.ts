@@ -20,6 +20,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ViewHomeComponent } from './views/view-home/view-home.component';
 import { ViewProjectComponent } from './views/view-project/view-project.component';
+import { EditorComponent } from './components/editor/editor.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ViewProjectComponent } from './views/view-project/view-project.componen
     ViewHomeComponent,
     FooterComponent,
     ViewProjectComponent,
+    EditorComponent,
   ],
   imports: [
     BrowserModule,
