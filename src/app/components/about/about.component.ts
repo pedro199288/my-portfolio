@@ -21,11 +21,11 @@ export class AboutComponent implements OnInit {
   
   
   ngOnInit() {
-    // Tests of RequestsService TODO: Delete or modify with the real api of the project
     this.personalData = false;
     this._requestsService.getPersonalData().subscribe(
       result => {
         this.personalData = result.personalData;
+        console.log(this.personalData);
 
         // after getting the data, asign to variables and 
         var fullName = Helper.fetchDataByKey('fullname', this.personalData);

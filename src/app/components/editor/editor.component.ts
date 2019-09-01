@@ -7,15 +7,20 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class EditorComponent implements OnInit {
   public active: boolean;
-  @Input('personalData') personalData: string;
+  @Input('data') data: string;
 
 
   constructor() {
-    this.active = false;
+    this.active = true;
   }
 
   ngOnInit() {
-
+    console.log(this.data);
   }
 
+
+  drag(e){
+    console.log(e);
+    console.log('drageando');
+  }
 }

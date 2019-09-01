@@ -1,33 +1,21 @@
-<div id="editor" [ngClass]="{'editor-active': active}">
-  <div class="box-header">
-    <h3>Portfolio Editor</h3>
-  </div>
-  <p>
-    TODO: Put a editor component on each of the components with DB data, pass the component data to the editor component and edit there
-  </p>
-  <div class="box-body">
-    <div class="form">
-        <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
-          <div class="form-item">
-            <label for="name">name</label>
-            <input type="text" name="name" id="name" #name="ngModel" [(ngModel)]="personalData">
+<div class="editor" [ngClass]="{'editor-active': active}">
+  <div class="editor-wrapper">
+      <div class="box-header" (mousedown)="drag($event)">
+        <h3>Portfolio Editor</h3>
+      </div>
+      <p>
+        TODO: Put a editor component on each of the components with DB data, pass the component data to the editor component and edit there
+      </p>
+      <div class="box-body">
+        <h3>Modify data</h3>
+          <div class="form">
+              <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
+                <div class="form-item" *ngFor="let dataElement of data">
+                  <label for="{{dataElement.key}}">{{dataElement.text}}</label>
+                  <input type="text" name="{{dataElement.key}}" id="{{dataElement.key}}" #{{dataElement.key}}="ngModel" [(ngModel)]="dataElement.value">
+                </div>
+              </form>
           </div>
-          <div class="form-item">
-            <label for="email">email</label>
-            <!-- <input type="email" name="email" id="email" #email="ngModel" [(ngModel)]="contactMessage.email" > -->
-          </div>
-          <div class="form-item">
-            <label for="subject">subject</label>
-            <!-- <input type="text" name="subject" id="subject" #subject="ngModel" [(ngModel)]="contactMessage.subject" > -->
-          </div>
-          <div class="form-item">
-            <label for="message">message</label>
-            <!-- <textarea name="message" id="message" #message="ngModel" [(ngModel)]="contactMessage.message"></textarea> -->
-          </div>
-          <div class="form-item">
-            <input type="submit" value="Save" class="btn btn-primary">
-          </div>
-        </form>
       </div>
   </div>
-  </div>
+</div>
