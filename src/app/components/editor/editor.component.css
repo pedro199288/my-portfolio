@@ -24,6 +24,7 @@
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
+    box-shadow: 3px 3px 10px rgb(136, 136, 136);
     width: 60rem;
     max-width: 40vw;
     min-width: 28rem;
@@ -50,6 +51,27 @@
     text-align: left;
     border-bottom: 1px solid var(--secondary-green);
     margin-bottom: 1rem;
+}
+
+.editor .closeable {
+    cursor: pointer;
+    position: absolute;
+    right: 1rem;
+    top: 0.4rem;
+    font-size: 2.5rem;
+    font-weight: bolder;
+}
+
+.btn-edit {
+    cursor: pointer;
+    position: absolute;
+    right: 3rem;
+    top: 3rem;
+}
+
+.btn-edit:hover {
+    text-decoration: underline;
+    color: var(--secondary-green);
 }
 
 .editor .box-body {

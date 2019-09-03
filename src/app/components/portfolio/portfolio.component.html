@@ -2,7 +2,7 @@
   <h2 class="section-title">portfolio</h2>
   <div class="portfolio-grid">
     <div
-      *ngFor="let project of portfolio" 
+      *ngFor="let project of projects" 
       [ngClass]="{'port-item': true}">
       <div class="img-wrapper">
         <div class="bg-buttons">
@@ -19,3 +19,4 @@
     </div>
   </div>
 </div>
+<editor [data]="projects" [dataName]="'projects'"></editor>

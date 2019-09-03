@@ -18,4 +18,4 @@
   </div>
   <div *ngIf="description" class="wrapper" id="about-description" [innerHTML]="description.value"></div>
 </div>
-<editor [data]="personalData"></editor>
+<editor [data]="personalData" [dataName]="'personalData'"></editor>

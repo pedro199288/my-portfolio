@@ -38,6 +38,7 @@ h2,h1 {
 .section {
     padding: 5rem 0;
     display: block;
+    position: relative;
 }
 
 h2.section-title {
@@ -89,6 +90,7 @@ h2.section-title {
     -moz-border-radius: 5rem;
     -ms-border-radius: 5rem;
     -o-border-radius: 5rem;
+    cursor: pointer;
 }
 
 .btn-primary {
@@ -125,6 +127,7 @@ h2.section-title {
     display: inline-block;
 }
 
+input,
 input[type='text'],
 input[type='password'],
 input[type='select'],

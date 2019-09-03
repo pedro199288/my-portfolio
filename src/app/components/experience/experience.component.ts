@@ -29,6 +29,7 @@ export class ExperienceComponent implements OnInit {
       //   return 1;
       // }
       // return 0;
+      console.log(this.experience);
     });
   }
 }

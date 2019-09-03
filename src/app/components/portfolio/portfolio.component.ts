@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { portfolio } from './../../services/data';
+import { projects } from './../../services/data';
 
 @Component({
   selector: 'portfolio',
@@ -7,10 +7,10 @@ import { portfolio } from './../../services/data';
   styleUrls: ['./portfolio.component.css']
 })
 export class PortfolioComponent implements OnInit {
-  portfolio: object;
+  projects: object;
 
   constructor() {
-    this.portfolio = portfolio;
+    this.projects = projects;
   }
 
   ngOnInit() {

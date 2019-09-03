@@ -34,7 +34,7 @@ export class ViewProjectComponent implements OnInit {
       // TODO: With this key, get the whole project data to show it on this page (service, http...)
 
     })
-
+    /*
     // Tests of RequestsService TODO: Delete or modify with the real api of the project
     this.user = false;
     this._requestsService.getUsers().subscribe(
@@ -59,7 +59,7 @@ export class ViewProjectComponent implements OnInit {
         console.log(error);
       }
     )
+    */
   }
-
 
 }

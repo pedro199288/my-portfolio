@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Helper } from 'src/app/services/helper.service';
-import { RequestsService } from '../../services/requests.service';
+import { PersonalDataService } from '../../services/personal-data.service';
 
 @Component({
   selector: 'about',
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css'],
-  providers: [RequestsService]
+  providers: [PersonalDataService]
 })
 export class AboutComponent implements OnInit {
   public personalData;
@@ -15,17 +15,16 @@ export class AboutComponent implements OnInit {
   public description;
 
   constructor(
-    private _requestsService: RequestsService
+    private _personalDataService: PersonalDataService
   ) {
   }
   
   
   ngOnInit() {
     this.personalData = false;
-    this._requestsService.getPersonalData().subscribe(
+    this._personalDataService.getAll().subscribe(
       result => {
         this.personalData = result.personalData;
-        console.log(this.personalData);
 
         // after getting the data, asign to variables and 
         var fullName = Helper.fetchDataByKey('fullname', this.personalData);
@@ -43,13 +42,7 @@ export class AboutComponent implements OnInit {
       error => {
         console.log(<any>error);
       }
-    )
-
-
-    
-
-
-
+    );
 
 
   }

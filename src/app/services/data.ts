@@ -117,7 +117,7 @@ export const experience = [
         rol   : 'Junior Full Stack Web Developer',
         description: 'I have work on few projects (can be seen in the portfolio section) on my own by the moment, since I haven\'t had enought time due to I am still studying. But I have been able to get enought time to do a bunch of courses about HTML, CSS, JavaScript, PHP, MySQL, NodeJS, Angular, MongoDB...'
     }
-]
+];
 
 export const education = [
     {
@@ -178,7 +178,7 @@ export const education = [
 ]
 
 
-export const portfolio = [
+export const projects = [
     {
         key         : 'experiencity-escape-room',
         name        : 'Experiencity Escape Room',
