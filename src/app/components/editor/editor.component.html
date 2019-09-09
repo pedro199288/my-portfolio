@@ -21,7 +21,7 @@
           <div *ngIf="dataName=='personalData'">
             <h4>personalDataForm</h4>
             <div class="form-item" *ngFor="let dataElement of data">
-                <form #personalDataForm="ngForm" (ngSubmit)="update(personalDataForm)"> <!--TODO: check method-->
+                <form #personalDataForm="ngForm" (ngSubmit)="update(personalDataForm, 'PersonalData')">
                   <p><strong>{{dataElement.key}}</strong></p>
                   <label for="key">Key</label>
                   <input type="text" name="key" #key="ngModel" [(ngModel)]="dataElement.key">
@@ -31,14 +31,14 @@
 
                   <label for="value">Value</label>
                   <input type="text" name="value" #value="ngModel" [(ngModel)]="dataElement.value">
-
-                  <input type="hidden" name="id" value="{{dataElement._id}}">
+                  
+                  <input type="hidden" name="_id" #_id="ngModel"   [(ngModel)]="dataElement._id">
                   <input class="btn" type="submit" value="Save">
                 </form>
                 <button (click)="delete(dataElement._id)" class="btn">Delete</button>
             </div>
 
-            <form #newPersonalData="ngForm" (ngSubmit)="save(newPersonalData)">
+            <form #newPersonalData="ngForm" (ngSubmit)="save(newPersonalData, 'personalData')">
                 <label for="key">Key</label>
                 <input type="text" name="key" #key="ngModel" [(ngModel)]="personalData.key">
 

@@ -103,13 +103,18 @@ export class EditorComponent implements OnInit {
     console.log(form);
   }
 
-  // method for saving new documents of the components
-  save(form) {
-    console.log(this.personalData);
-    this._personalDataService.save(this.personalData).subscribe(
+  /**
+   *  method for saving new documents of the components
+   * @var form, the form that is sending the data to be updated
+   * @var thisProperty, the property of this class which will be saved
+   */
+  save(form, thisProperty) { // TODO: cretate all forms for saving new data, with the thisProperty param corresponding to each objectType
+    console.log(this[thisProperty]);
+    // call the service method, here we refer to the method by concatenating '_' and 'Service' with the property being saved
+    this['_'+thisProperty+'Service'].save(this[thisProperty]).subscribe(
         response => {
           console.log(response);
-          if(response.personalData) {
+          if(response[thisProperty]) {
             this.status = 'success';
             this.message = 'Data saved !!';
           } else {
@@ -131,13 +136,26 @@ export class EditorComponent implements OnInit {
   }
 
 
-  // method for updating documents of the components
-  update(form) {
-    console.log(form.form.value);
-    this._personalDataService.save(this.personalData).subscribe(
+  /**
+   * method for updating documents of the components
+   * @var form, the form that is sending the data to be updated
+   * @var service, the service that is needed to update the passed form
+   */
+  update(form, objectType) { // TODO: cretate all forms for updating data, with the objectType param corresponding to each objectType
+    // assing values from the form to this variable
+    var dataForm = form.form.value;
+
+    // create a new object with the received data depending on the param 'objectType'
+    var preparedData = this.manageData(dataForm, objectType);
+
+    // asign data for updating to a variable
+    var updatingData = preparedData.data;
+
+    // execute service's method to update data
+    this[preparedData.serviceName].update(updatingData).subscribe(
         response => {
           console.log(response);
-          if(response.personalData) {
+          if(response[preparedData.sucProp]) {
             this.status = 'success';
             this.message = 'Data saved !!';
           } else {
@@ -156,6 +174,79 @@ export class EditorComponent implements OnInit {
     setTimeout(() => {
       this.status = null;
     }, 3000);
+  }
+
+  /**
+   * Deals with the data depending on the param 'service' received
+   * @returns the service to be used, the updating object and the expected response property if updated successfully
+   */
+  manageData(dataForm, ObjectType: string) {
+    switch (ObjectType) {
+      case 'PersonalData':
+        // create updating Object
+        var updatingData = new PersonalData(dataForm._id, dataForm.key, dataForm.text, dataForm.value, dataForm.link );
+        // expected property in success case
+        var sucProperty = 'personalDataUpdated';
+        // service name
+        var serviceName = '_personalDataService';
+        break;
+      // TODO: create all updating forms and his service name as param on the onSubmit's function
+      case 'PersonalData':
+        // create updating Object
+        var updatingData = new PersonalData(dataForm._id, dataForm.key, dataForm.text, dataForm.value, dataForm.link );
+        // expected property in success case
+        var sucProperty = 'personalDataUpdated';
+        // service name
+        var serviceName = '_personalDataService';
+        break;
+
+      case 'PersonalData':
+        // create updating Object
+        var updatingData = new PersonalData(dataForm._id, dataForm.key, dataForm.text, dataForm.value, dataForm.link );
+        // expected property in success case
+        var sucProperty = 'personalDataUpdated';
+        // service name
+        var serviceName = '_personalDataService';
+        break;
+
+      case 'PersonalData':
+        // create updating Object
+        var updatingData = new PersonalData(dataForm._id, dataForm.key, dataForm.text, dataForm.value, dataForm.link );
+        // expected property in success case
+        var sucProperty = 'personalDataUpdated';
+        // service name
+        var serviceName = '_personalDataService';
+        break;
+
+      case 'PersonalData':
+        // create updating Object
+        var updatingData = new PersonalData(dataForm._id, dataForm.key, dataForm.text, dataForm.value, dataForm.link );
+        // expected property in success case
+        var sucProperty = 'personalDataUpdated';
+        // service name
+        var serviceName = '_personalDataService';
+        break;
+
+      case 'PersonalData':
+        // create updating Object
+        var updatingData = new PersonalData(dataForm._id, dataForm.key, dataForm.text, dataForm.value, dataForm.link );
+        // expected property in success case
+        var sucProperty = 'personalDataUpdated';
+        // service name
+        var serviceName = '_personalDataService';
+        break;
+      default:
+        break;
+    }
+
+    // return the data needed to execute the update depending on the objectType coming from the form
+    return {
+      data:   updatingData,
+      sucProp: sucProperty,
+      serviceName: serviceName
+    }
+
+
   }
 
 
