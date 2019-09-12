@@ -1,10 +1,21 @@
 import { Component, OnInit, Input, HostListener } from '@angular/core';
+import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import { Config } from '../../config/config';
+
+// models
 import { PersonalData } from 'src/app/models/PersonalData';
 import { Education } from 'src/app/models/Education';
 import { Experience } from 'src/app/models/Experience';
 import { Skill } from 'src/app/models/Skill';
 import { Project } from 'src/app/models/Project';
+
+// services
 import { PersonalDataService } from 'src/app/services/personal-data.service';
+import { SkillService } from 'src/app/services/skill.service';
+import { ExperienceService } from 'src/app/services/experience.service';
+import { EducationService } from 'src/app/services/education.service';
+import { ProjectService } from 'src/app/services/project.service';
+import { UploadService } from '../../services/upload.service';
 
 @Component({
   selector: 'editor',
@@ -12,6 +23,11 @@ import { PersonalDataService } from 'src/app/services/personal-data.service';
   styleUrls: ['./editor.component.css'],
   providers: [
     PersonalDataService,
+    SkillService,
+    ExperienceService,
+    EducationService,
+    ProjectService,
+    UploadService
   ]
 })
 export class EditorComponent implements OnInit {
@@ -28,15 +44,24 @@ export class EditorComponent implements OnInit {
   @Input('data') data: any;
   @Input('dataName') dataName: string;
 
-  // properites with the models
+  // properties with the models of the app
   public personalData: PersonalData;
   public education: Education;
   public experience: Experience;
   public skill: Skill;
   public project: Project;
+  public filesToUpload: File[];
   
+  // font awesome properties
+  faPencilAlt = faPencilAlt;
+
   constructor(
-    private _personalDataService: PersonalDataService
+    private _personalDataService: PersonalDataService,
+    private _skillService: SkillService,
+    private _experienceService: ExperienceService,
+    private _educationService: EducationService,
+    private _projectService: ProjectService,
+    private _uploadService: UploadService,
   ) {
       this.active = false; // By default, the component won't be displayed, because is inactive
       this.status = null;
@@ -45,9 +70,9 @@ export class EditorComponent implements OnInit {
       
       // assign component's objects to the properties, to be used when creating a new object with the editor component
       this.personalData = new PersonalData('', '', '', '', false);
-      this.education = new Education('', '', {start: new Date, end: new Date}, '', '', '', '');
-      this.experience = new Experience('', '', {start: new Date, end: new Date}, '', '', '');
       this.skill = new Skill('', '', '', 0);
+      this.experience = new Experience('', '', {start: new Date, end: new Date}, '', '', '');
+      this.education = new Education('', '', {start: new Date, end: new Date}, '', '', '', '');
       this.project = new Project('', '', '', '', [''], '', '', '');
   }
   
@@ -55,8 +80,8 @@ export class EditorComponent implements OnInit {
     // The initial position of the editor's div
     this.x_pos = 0;
     this.y_pos = 0;
-    console.log(this.data);
-    console.log(this.dataName);
+    // console.log(this.data);
+    // console.log(this.dataName);
   }
 
   // Capture events for mousemove
@@ -115,8 +140,17 @@ export class EditorComponent implements OnInit {
         response => {
           console.log(response);
           if(response[thisProperty]) {
-            this.status = 'success';
+            // FIXME: solo para project o si hay imagen. Upload image
+            this._uploadService.makeFileRequest(Config.API_URL+"/project/upload-image/"+response[thisProperty]._id, [], this.filesToUpload, 'image' )
+              .then((result: any) => {
+                this.status = 'success';
+                console.log(result);
+                form.reset();
+                // TODO: ver cuando mandar respuesta de exito, comprobar antes si hay imagen o si es project lo que se guarad (porque tendría imagen)
+              });
+              
             this.message = 'Data saved !!';
+            // TODO: insert the new document in the DOM without reloading page
           } else {
             this.status = 'error';
             this.message = 'Save error!!';
@@ -133,6 +167,10 @@ export class EditorComponent implements OnInit {
     setTimeout(() => {
       this.status = null;
     }, 3000);
+  }
+
+  fileChangeEvent(fileInput: any) {
+    this.filesToUpload = <Array<File>>fileInput.target.files;
   }
 
 
@@ -181,61 +219,55 @@ export class EditorComponent implements OnInit {
    * @returns the service to be used, the updating object and the expected response property if updated successfully
    */
   manageData(dataForm, ObjectType: string) {
+    var updatingData: any;
     switch (ObjectType) {
       case 'PersonalData':
         // create updating Object
-        var updatingData = new PersonalData(dataForm._id, dataForm.key, dataForm.text, dataForm.value, dataForm.link );
+        updatingData = new PersonalData(dataForm._id, dataForm.key, dataForm.text, dataForm.value, dataForm.link );
         // expected property in success case
         var sucProperty = 'personalDataUpdated';
         // service name
         var serviceName = '_personalDataService';
         break;
       // TODO: create all updating forms and his service name as param on the onSubmit's function
-      case 'PersonalData':
+      case 'Skill':
         // create updating Object
-        var updatingData = new PersonalData(dataForm._id, dataForm.key, dataForm.text, dataForm.value, dataForm.link );
+        updatingData = new Skill(dataForm._id, dataForm.key, dataForm.text, dataForm.value);
         // expected property in success case
-        var sucProperty = 'personalDataUpdated';
+        var sucProperty = 'skillUpdated';
         // service name
-        var serviceName = '_personalDataService';
+        var serviceName = '_skillService';
         break;
 
-      case 'PersonalData':
+      case 'Experience':
         // create updating Object
-        var updatingData = new PersonalData(dataForm._id, dataForm.key, dataForm.text, dataForm.value, dataForm.link );
+        var start = new Date(dataForm.start);
+        var end = new Date(dataForm.end);
+        updatingData = new Experience(dataForm._id, dataForm.key, { start, end }, dataForm.company, dataForm.rol, dataForm.description );
         // expected property in success case
-        var sucProperty = 'personalDataUpdated';
+        var sucProperty = 'experienceUpdated';
         // service name
-        var serviceName = '_personalDataService';
+        var serviceName = '_experienceService';
         break;
 
-      case 'PersonalData':
+      case 'Education':
         // create updating Object
-        var updatingData = new PersonalData(dataForm._id, dataForm.key, dataForm.text, dataForm.value, dataForm.link );
+        var start = new Date(dataForm.start);
+        var end = new Date(dataForm.end);
+        updatingData = new Education(dataForm._id, dataForm.key, { start, end }, dataForm.center, dataForm.name, dataForm.clarification, dataForm.link );
         // expected property in success case
-        var sucProperty = 'personalDataUpdated';
+        var sucProperty = 'educationUpdated';
         // service name
-        var serviceName = '_personalDataService';
+        var serviceName = '_educationService';
         break;
 
-      case 'PersonalData':
+      case 'Project':
         // create updating Object
-        var updatingData = new PersonalData(dataForm._id, dataForm.key, dataForm.text, dataForm.value, dataForm.link );
+        updatingData = new Project(dataForm._id, dataForm.key, dataForm.name, dataForm.company, dataForm.tools, dataForm.description, dataForm.website, dataForm.image );
         // expected property in success case
-        var sucProperty = 'personalDataUpdated';
+        var sucProperty = 'projectUpdated';
         // service name
-        var serviceName = '_personalDataService';
-        break;
-
-      case 'PersonalData':
-        // create updating Object
-        var updatingData = new PersonalData(dataForm._id, dataForm.key, dataForm.text, dataForm.value, dataForm.link );
-        // expected property in success case
-        var sucProperty = 'personalDataUpdated';
-        // service name
-        var serviceName = '_personalDataService';
-        break;
-      default:
+        var serviceName = '_projectService';
         break;
     }
 

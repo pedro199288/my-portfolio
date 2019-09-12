@@ -1,35 +1,39 @@
 import { Component, OnInit } from '@angular/core';
-import { experience } from './../../services/data';
-import { Helper } from  '../../services/helper.service';
+import { Experience } from '../../models/Experience';
+import { ExperienceService } from '../../services/experience.service';
+
 
 @Component({
   selector: 'experience',
   templateUrl: './experience.component.html',
-  styleUrls: ['./experience.component.css']
+  styleUrls: ['./experience.component.css'],
+  providers: [ExperienceService]
 })
 export class ExperienceComponent implements OnInit {
-  public experience: any[];
+  public experience: Experience[];
   
-  constructor() {
-    this.experience = experience;
+  constructor(
+    private _experienceService: ExperienceService
+  ) {
+
   }
 
   ngOnInit() {
     var startDateA, startDateB;
+    this._experienceService.getAll().subscribe(
+      result => {
+        this.experience = result.experience;
 
-    this.experience.sort((a, b) => {
-      startDateA = new Date (a.date.start);
-      startDateB = new Date (b.date.start);
-      return startDateA > startDateB ? -1 : (startDateA < startDateB ? 1 : -1 );
-
-      // if ( startDateA > startDateB ){
-      //   return -1;
-      // }
-      // if ( startDateA < startDateB ){
-      //   return 1;
-      // }
-      // return 0;
-      console.log(this.experience);
-    });
+        // Sort the documents received by its date.start
+        this.experience.sort((a, b) => {
+          startDateA = new Date (a.date.start);
+          startDateB = new Date (b.date.start);
+          return startDateA > startDateB ? -1 : (startDateA < startDateB ? 1 : -1 );
+        });
+      },
+      error => {
+        console.log(<any>error);
+      }
+    )
   }
 }

@@ -1,14 +1,14 @@
-// Service for personalData
+// Service for project
 
 // imports
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Config } from '../config/config';
-import { PersonalData } from '../models/PersonalData';
+import { Project } from '../models/Project';
 
 @Injectable()
-export class PersonalDataService{
+export class ProjectService{
     public url: string;
 
     constructor(
@@ -20,32 +20,32 @@ export class PersonalDataService{
     getAll(): Observable<any> {
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-        return this._http.get(this.url+'/personal-data/all');
+        return this._http.get(this.url+'/project/all');
     }
 
     getOneById(id): Observable<any> {
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-        return this._http.get(this.url+'/personal-data/'+id);
+        return this._http.get(this.url+'/project/'+id);
     }
 
     // Saves  document
-    save(personalData: PersonalData): Observable<any> {
-        let params = JSON.stringify(personalData);
+    save(project: Project): Observable<any> {
+        let params = JSON.stringify(project);
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
 
         // call the api save route
-        return this._http.post(this.url+'/personal-data/save', params, {headers: headers});
+        return this._http.post(this.url+'/project/save', params, {headers: headers});
     }
 
     // Updates  document
-    update(personalData: PersonalData): Observable<any> {
-        console.log(personalData);
-        let params = JSON.stringify(personalData);
+    update(project: Project): Observable<any> {
+        console.log(project);
+        let params = JSON.stringify(project);
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
 
         // call the api update route
-        return this._http.put(this.url+'/personal-data/'+personalData._id, params, {headers: headers});
+        return this._http.put(this.url+'/project/'+project._id, params, {headers: headers});
     }
 
     // Deletes  document
@@ -53,7 +53,7 @@ export class PersonalDataService{
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
 
         // call the api delete route
-        return this._http.delete(this.url+'/personal-data/'+id,  {headers: headers})
+        return this._http.delete(this.url+'/project/'+id,  {headers: headers})
     }
 
 

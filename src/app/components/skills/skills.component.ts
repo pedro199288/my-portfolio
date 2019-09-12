@@ -1,19 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { skills } from './../../services/data';
+import { SkillService } from './../../services/skill.service';
+import { Skill } from '../../models/Skill';
 
 @Component({
   selector: 'skills',
   templateUrl: './skills.component.html',
-  styleUrls: ['./skills.component.css']
+  styleUrls: ['./skills.component.css'],
+  providers: [SkillService]
 })
 export class SkillsComponent implements OnInit {
-  public skills: object[];
+  public skills: Skill[];
 
-  constructor() {
-    this.skills = skills;
-  }
+  constructor(
+    private _skillService: SkillService
+  ) {  }
 
   ngOnInit() {
+    this._skillService.getAll().subscribe(
+      result => {
+        this.skills = result.skills
+      },
+      error => {
+        console.log(<any>error);
+      }
+    );
   }
 
 }

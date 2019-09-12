@@ -14,96 +14,217 @@
       </div>
       <div class="box-body">
         <h3>Modify data</h3>
-  
 
         <div class="form">
           <!-- For personalDataForm -->
           <div *ngIf="dataName=='personalData'">
             <h4>personalDataForm</h4>
-            <div class="form-item" *ngFor="let dataElement of data">
+            <div *ngFor="let dataElement of data">
                 <form #personalDataForm="ngForm" (ngSubmit)="update(personalDataForm, 'PersonalData')">
-                  <p><strong>{{dataElement.key}}</strong></p>
-                  <label for="key">Key</label>
-                  <input type="text" name="key" #key="ngModel" [(ngModel)]="dataElement.key">
+                  <div class="form-item">
+                    <p><strong>{{dataElement.key}}</strong></p>
+                  </div>
 
-                  <label for="text">Text</label>
-                  <input type="text" name="text" #text="ngModel" [(ngModel)]="dataElement.text">
+                  <div class="form-item">
+                    <label for="key">Key</label>
+                    <input type="text" name="key" #key="ngModel" [(ngModel)]="dataElement.key">
+                  </div>
 
-                  <label for="value">Value</label>
-                  <input type="text" name="value" #value="ngModel" [(ngModel)]="dataElement.value">
+                  <div class="form-item">
+                    <label for="text">Text</label>
+                    <input type="text" name="text" #text="ngModel" [(ngModel)]="dataElement.text">
+                  </div>
+
+                  <div class="form-item">
+                    <label for="value">Value</label>
+                    <input type="text" name="value" #value="ngModel" [(ngModel)]="dataElement.value">
+                  </div>
                   
-                  <input type="hidden" name="_id" #_id="ngModel"   [(ngModel)]="dataElement._id">
-                  <input class="btn" type="submit" value="Save">
+                  <div class="form-item">
+                    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="dataElement._id">
+                    <input class="btn" type="submit" value="Save">
+                  </div>
+
                 </form>
                 <button (click)="delete(dataElement._id)" class="btn">Delete</button>
             </div>
 
             <form #newPersonalData="ngForm" (ngSubmit)="save(newPersonalData, 'personalData')">
+              <div class="form-item">
+                <p><strong>{{'New ' + dataName }}</strong></p>
+              </div>
+
+              <div class="form-item">
                 <label for="key">Key</label>
                 <input type="text" name="key" #key="ngModel" [(ngModel)]="personalData.key">
+              </div>
 
+              <div class="form-item">
                 <label for="text">Text</label>
                 <input type="text" name="text" #text="ngModel" [(ngModel)]="personalData.text">
+              </div>
 
+              <div class="form-item">
                 <label for="value">Value</label>
                 <input type="text" name="value" #value="ngModel" [(ngModel)]="personalData.value">
+              </div>
 
+              <div class="form-item">
                 <input class="btn" type="submit" value="Save">
+              </div>
             </form>
-            {{personalData.key}}
-            {{personalData.text}}
-            {{personalData.value}}
+          
           </div>
 
           <!-- For skillForm -->
           <div *ngIf="dataName=='skills'">
               <h4>skills</h4>
-              <div class="form-item" *ngFor="let dataElement of data">
-                  <form #{{dataName+dataElement.key}}="ngForm" (ngSubmit)="onSubmit(dataName+dataElement.key)">
-                    <p><strong>{{dataElement.key}}</strong></p>
-                    <label for="key">Key</label>
-                    <input type="text" name="key" #key="ngModel" [(ngModel)]="dataElement.key">
+              <div *ngFor="let dataElement of data">
+                  <form #skillsForm="ngForm" (ngSubmit)="update(skillsForm, 'Skill')">
+                    <div class="form-item">
+                      <p><strong>{{dataElement.key}}</strong></p>
+                    </div>
 
-                    <label for="text">Text</label>
-                    <input type="text" name="text" #text="ngModel" [(ngModel)]="dataElement.text">
+                    <div class="form-item">
+                      <label for="key">Key</label>
+                      <input type="text" name="key" #key="ngModel" [(ngModel)]="dataElement.key">
+                    </div>
 
-                    <label for="value">Value</label>
-                    <input type="text" name="value" #value="ngModel" [(ngModel)]="dataElement.value">
+                    <div class="form-item">
+                      <label for="text">Text</label>
+                      <input type="text" name="text" #text="ngModel" [(ngModel)]="dataElement.text">
+                    </div>
 
-                    <input type="hidden" name="id" value="{{dataElement._id}}">
-                    <input class="btn" type="submit" value="Save">
+                    <div class="form-item">
+                      <label for="value">Value</label>
+                      <input type="text" name="value" #value="ngModel" [(ngModel)]="dataElement.value">
+                    </div>
+
+                    <div class="form-item">
+                      <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="dataElement._id">
+                      <input class="btn" type="submit" value="Save">
+                      {{ 'el id es ' + dataElement._id }}
+                    </div>
+
                   </form>
+                  <button (click)="delete(dataElement._id)" class="btn">Delete</button>
               </div>
+
+              <form #newSkill="ngForm" (ngSubmit)="save(newSkill, 'skill')">
+                <div class="form-item">
+                  <p><strong>{{'New ' + dataName }}</strong></p>
+                </div>
+
+                <div class="form-item">
+                  <label for="key">Key</label>
+                  <input type="text" name="key" #key="ngModel" [(ngModel)]="skill.key">
+                </div>
+
+                <div class="form-item">
+                  <label for="text">Text</label>
+                  <input type="text" name="text" #text="ngModel" [(ngModel)]="skill.text">
+                </div>
+
+                <div class="form-item">
+                  <label for="value">Value</label>
+                  <input type="text" name="value" #value="ngModel" [(ngModel)]="skill.value">
+                </div>
+
+                <div class="form-item">
+                  <input class="btn" type="submit" value="Save">
+                </div>
+
+              </form>
           </div>
 
           <!-- For experienceForm -->
           <div *ngIf="dataName=='experience'">
               <h4>experience</h4>
               <div class="form-item" *ngFor="let dataElement of data">
-                  <form #{{dataName+dataElement.key}}="ngForm" (ngSubmit)="onSubmit(dataName+dataElement.key)">
+                  <form #experienceForm="ngForm" (ngSubmit)="update(experienceForm, 'Experience')">
+                    <div class="form-item">
                       <p><strong>{{dataElement.key}}</strong></p>
+                    </div>
+
+                    <div class="form-item">
                       <label for="key">Key</label>
                       <input type="text" name="key" #key="ngModel" [(ngModel)]="dataElement.key">
+                    </div>
 
+                    <div class="form-item">
                       <label for="start">Start</label>
                       <input type="date" name="start" #start="ngModel" [(ngModel)]="dataElement.date.start">
+                    </div>
 
+                    <div class="form-item">
                       <label for="end">End</label>
                       <input type="date" name="end" #end="ngModel" [(ngModel)]="dataElement.date.end">
+                    </div>
 
+                    <div class="form-item">
                       <label for="company">Company</label>
                       <input type="text" name="company" #company="ngModel" [(ngModel)]="dataElement.company">
+                    </div>
 
+                    <div class="form-item">
                       <label for="rol">Rol</label>
                       <input type="text" name="rol" #rol="ngModel" [(ngModel)]="dataElement.rol">
+                    </div>
 
+                    <div class="form-item">
                       <label for="description">Description</label>
                       <textarea name="description" #description="ngModel" [(ngModel)]="dataElement.description"></textarea>
+                    </div>
 
-                      <input type="hidden" name="id" value="{{dataElement._id}}">
+                    <div class="form-item">
+                      <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="dataElement._id">
                       <input class="btn" type="submit" value="Save">
+                    </div>
+
                   </form>
+                  <button (click)="delete(dataElement._id)" class="btn">Delete</button>
               </div>
+
+              <form #newExperience="ngForm" (ngSubmit)="save(newExperience, 'experience')">
+                  <div class="form-item">
+                    <p><strong>new {{dataName}}</strong></p>
+                  </div>
+
+                  <div class="form-item">
+                    <label for="key">Key</label>
+                    <input type="text" name="key" #key="ngModel" [(ngModel)]="experience.key">
+                  </div>
+
+                  <div class="form-item">
+                    <label for="start">Start</label>
+                    <input type="date" name="start" #start="ngModel" [(ngModel)]="experience.date.start">
+                  </div>
+
+                  <div class="form-item">
+                    <label for="end">End</label>
+                    <input type="date" name="end" #end="ngModel" [(ngModel)]="experience.date.end">
+                  </div>
+
+                  <div class="form-item">
+                    <label for="company">Company</label>
+                    <input type="text" name="company" #company="ngModel" [(ngModel)]="experience.company">
+                  </div>
+
+                  <div class="form-item">
+                    <label for="rol">Rol</label>
+                    <input type="text" name="rol" #rol="ngModel" [(ngModel)]="experience.rol">
+                  </div>
+
+                  <div class="form-item">
+                    <label for="description">Description</label>
+                    <textarea name="description" #description="ngModel" [(ngModel)]="experience.description"></textarea>
+                  </div>
+
+                  <div class="form-item">
+                    <input class="btn" type="submit" value="Save">
+                  </div>
+
+                </form>
           </div>
 
           <!-- For educationForm -->
@@ -111,30 +232,90 @@
               <h4>education</h4>
               <div class="form-item" *ngFor="let dataElement of data">
               {{'dateElement'}}
-                  <form #{{dataName+dataElement.key}}="ngForm" (ngSubmit)="onSubmit(dataName+dataElement.key)">
+                  <form #educationForm="ngForm" (ngSubmit)="update(educationForm, 'Education')">
+                    <div class="form-item">
                       <p><strong>{{dataElement.key}}</strong></p>
+                    </div>
+
+                    <div class="form-item">
                       <label for="key">Key</label>
                       <input type="text" name="key" #key="ngModel" [(ngModel)]="dataElement.key">
+                    </div>
 
+                    <div class="form-item">
                       <label for="start">Start</label>
-                      <!-- <input type="date" name="start" #start="ngModel" [(ngModel)]="dataElement.date.start"> -->
+                      <input type="date" name="start" #start="ngModel" [(ngModel)]="dataElement.date.start">
+                    </div>
 
+                    <div class="form-item">
                       <label for="end">End</label>
-                      <!-- <input type="date" name="end" #end="ngModel" [(ngModel)]="dataElement.date.end"> -->
+                      <input type="date" name="end" #end="ngModel" [(ngModel)]="dataElement.date.end">
+                    </div>
 
+                    <div class="form-item">
                       <label for="center">Center</label>
                       <input type="text" name="center" #center="ngModel" [(ngModel)]="dataElement.center">
-
+                    </div>
+                    
+                    <div class="form-item">
                       <label for="name">Name</label>
                       <input type="text" name="name" #name="ngModel" [(ngModel)]="dataElement.name">
+                    </div>
 
+                    <div class="form-item">
                       <label for="link">Link</label>
                       <input type="text" name="link" #link="ngModel" [(ngModel)]="dataElement.link">
+                    </div>
 
-                      <input type="hidden" name="id" value="{{dataElement._id}}">
+                    <div class="form-item">
+                      <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="dataElement._id">
                       <input class="btn" type="submit" value="Save">
+                    </div>
+
                   </form>
+                  <button (click)="delete(dataElement._id)" class="btn">Delete</button>
               </div>
+
+              <form #newEducation="ngForm" (ngSubmit)="save(newEducation, 'education')">
+                <div class="form-item">
+                  <p><strong>new {{dataName}}</strong></p>
+                </div>
+
+                <div class="form-item">
+                  <label for="key">Key</label>
+                  <input type="text" name="key" #key="ngModel" [(ngModel)]="education.key">
+                </div>
+
+                <div class="form-item">
+                  <label for="start">Start</label>
+                  <input type="date" name="start" #start="ngModel" [(ngModel)]="education.date.start">
+                </div>
+
+                <div class="form-item">
+                  <label for="end">End</label>
+                  <input type="date" name="end" #end="ngModel" [(ngModel)]="education.date.end">
+                </div>
+
+                <div class="form-item">
+                  <label for="center">Center</label>
+                  <input type="text" name="center" #center="ngModel" [(ngModel)]="education.center">
+                </div>
+                
+                <div class="form-item">
+                  <label for="name">Name</label>
+                  <input type="text" name="name" #name="ngModel" [(ngModel)]="education.name">
+                </div>
+
+                <div class="form-item">
+                  <label for="link">Link</label>
+                  <input type="text" name="link" #link="ngModel" [(ngModel)]="education.link">
+                </div>
+
+                <div class="form-item">
+                  <input class="btn" type="submit" value="Save">
+                </div>
+
+              </form>
           </div>
 
           <!-- For projectForm -->
@@ -142,42 +323,107 @@
               <h4>projects</h4>
             <div class="form-item" *ngFor="let dataElement of data">
               {{'dateElement'}}
-                  <form #{{dataName+dataElement.key}}="ngForm" (ngSubmit)="onSubmit(dataName+dataElement.key)">
+                  <form #projectsForm="ngForm" (ngSubmit)="update(projectsForm, 'Project')">
+                    <div class="form-item">
                       <p><strong>{{dataElement.key}}</strong></p>
+                    </div>
+
+                    <div class="form-item">
                       <label for="key">Key</label>
                       <input type="text" name="key" #key="ngModel" [(ngModel)]="dataElement.key">
+                    </div>
 
+                    <div class="form-item">
                       <label for="name">Name</label>
                       <input type="text" name="name" #name="ngModel" [(ngModel)]="dataElement.name">
+                    </div>
 
-
+                    <div class="form-item">
+                      <!-- <label>current image</label> -->
+                      <!-- <img src=""> TODO: ver como traer img del servidor -->
                       <label for="image">image</label>
-                      <input type="file" name="image">
+                      <input type="file" name="image" (change)="fileChangeEvent($event)">
+                    </div>
 
-
+                    <div class="form-item">
                       <label for="company">Company</label>
                       <input type="text" name="company" #company="ngModel" [(ngModel)]="dataElement.company">
+                    </div>
 
+                    <div class="form-item">
                       <label for="tools">Tools</label>
                       <input type="text" name="tools" #tools="ngModel" [(ngModel)]="dataElement.tools">
+                    </div>
 
+                    <div class="form-item">
                       <label for="description">Description</label>
                       <textarea name="description" #description="ngModel" [(ngModel)]="dataElement.description"></textarea>
+                    </div>
 
+                    <div class="form-item">
                       <label for="website">website</label>
                       <input type="text" name="website" #website="ngModel" [(ngModel)]="dataElement.website">
+                    </div>
 
-                      <input type="hidden" name="id" value="{{dataElement._id}}">
+                    <div class="form-item">
+                      <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="dataElement._id">
                       <input class="btn" type="submit" value="Save">
-                  </form>
-              </div>
-          </div>
-          
-          
+                    </div>
 
+                  </form>
+                  <button (click)="delete(dataElement._id)" class="btn">Delete</button>
+              </div>
+
+              <form #newProject="ngForm" (ngSubmit)="save(newProject, 'project')">
+                <div class="form-item">
+                  <p><strong>new {{dataName}}</strong></p>
+                </div>
+
+                <div class="form-item">
+                  <label for="key">Key</label>
+                  <input type="text" name="key" #key="ngModel" [(ngModel)]="project.key">
+                </div>
+
+                <div class="form-item">
+                  <label for="name">Name</label>
+                  <input type="text" name="name" #name="ngModel" [(ngModel)]="project.name">
+                </div>
+
+                <div class="form-item">
+                  <label for="image">image</label>
+                  <input type="file" name="image" (change)="fileChangeEvent($event)">
+                </div>
+
+                <div class="form-item">
+                  <label for="company">Company</label>
+                  <input type="text" name="company" #company="ngModel" [(ngModel)]="project.company">
+                </div>
+
+                <div class="form-item">
+                  <label for="tools">Tools</label>
+                  <input type="text" name="tools" #tools="ngModel" [(ngModel)]="project.tools">
+                </div>
+
+                <div class="form-item">
+                  <label for="description">Description</label>
+                  <textarea name="description" #description="ngModel" [(ngModel)]="project.description"></textarea>
+                </div>
+
+                <div class="form-item">
+                  <label for="website">website</label>
+                  <input type="text" name="website" #website="ngModel" [(ngModel)]="project.website">
+                </div>
+
+                <div class="form-item">
+                  <input class="btn" type="submit" value="Save">
+                </div>
+
+              </form>
+          </div>
+                    
         </div>
       </div>
   </div>
       
 </div>
-<span class="btn-edit" (click)="this.active = true">Edit</span>
+<span class="btn-edit" (click)="this.active = true"><fa-icon [icon]="faPencilAlt"></fa-icon> Edit</span>

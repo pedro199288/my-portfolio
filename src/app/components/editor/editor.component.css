@@ -74,6 +74,19 @@
     color: var(--secondary-green);
 }
 
+.btn-edit svg path {
+    color: var(--secondary-green);
+} /* FIXME: */
+
+.btn-edit .svg-inline--fa {
+    font-size: 1.6rem!important;
+    margin-right: 1rem;
+} /* FIXME: */
+
+svg.svg-inline--fa.fa-pencil-alt.fa-w-16 path {
+    color: green;
+} /* FIXME: */
+
 .editor .box-body {
     max-height: 90%;
     overflow-y: scroll;

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Helper } from 'src/app/services/helper.service';
 import { PersonalDataService } from '../../services/personal-data.service';
+import { PersonalData } from '../../models/PersonalData';
 
 @Component({
   selector: 'about',
@@ -9,7 +10,7 @@ import { PersonalDataService } from '../../services/personal-data.service';
   providers: [PersonalDataService]
 })
 export class AboutComponent implements OnInit {
-  public personalData;
+  public personalData: PersonalData[];
   public dataLeft;
   public dataRight;
   public description;
@@ -21,7 +22,6 @@ export class AboutComponent implements OnInit {
   
   
   ngOnInit() {
-    this.personalData = false;
     this._personalDataService.getAll().subscribe(
       result => {
         this.personalData = result.personalData;
