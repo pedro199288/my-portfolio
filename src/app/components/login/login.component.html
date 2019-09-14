@@ -1,0 +1,14 @@
+<h4 *ngIf="error">{{error}}</h4>
+<form (ngSubmit)="submit()">
+  <div class="form-item">
+    <label for="username">Username</label>
+    <input type="text" name="username" [(ngModel)]="username" />
+  </div>
+  <div class="form-item">
+    <label for="password">Password</label>
+    <input type="password" name="password" [(ngModel)]="password" />
+  </div>
+  <div class="form-item">
+    <button class="btn btn-primary" type="submit">Login</button>
+  </div>
+</form>

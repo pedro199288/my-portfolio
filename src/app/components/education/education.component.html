@@ -8,4 +8,4 @@
   </education-item>
   </div>
 </div>
-<editor [data]="education" [dataName]="'education'"></editor>
+<editor [data]="education" [dataName]="'education'" (sendDataToParent)="eventFromChild($event)"></editor>

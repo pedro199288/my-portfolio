@@ -1,5 +1,4 @@
-import { Component, OnInit, Input, HostListener } from '@angular/core';
-import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import { Component, OnInit, Input, EventEmitter, HostListener, Output } from '@angular/core';
 import { Config } from '../../config/config';
 
 // models
@@ -39,10 +38,13 @@ export class EditorComponent implements OnInit {
   public dragging: boolean;
   public status: string;
   public message: string;
+  public apiUrl: string;
 
   // properties with the data coming from the others components
   @Input('data') data: any;
   @Input('dataName') dataName: string;
+  // Output property to send data to parent
+  @Output() sendDataToParent = new EventEmitter();
 
   // properties with the models of the app
   public personalData: PersonalData;
@@ -51,9 +53,6 @@ export class EditorComponent implements OnInit {
   public skill: Skill;
   public project: Project;
   public filesToUpload: File[];
-  
-  // font awesome properties
-  faPencilAlt = faPencilAlt;
 
   constructor(
     private _personalDataService: PersonalDataService,
@@ -67,6 +66,7 @@ export class EditorComponent implements OnInit {
       this.status = null;
       this.message = null;
       this.dragging = false; // this property turns to true when mousedown on the head of the editor component
+      this.apiUrl = Config.API_URL;
       
       // assign component's objects to the properties, to be used when creating a new object with the editor component
       this.personalData = new PersonalData('', '', '', '', false);
@@ -80,8 +80,6 @@ export class EditorComponent implements OnInit {
     // The initial position of the editor's div
     this.x_pos = 0;
     this.y_pos = 0;
-    // console.log(this.data);
-    // console.log(this.dataName);
   }
 
   // Capture events for mousemove
@@ -110,22 +108,9 @@ export class EditorComponent implements OnInit {
     // get the position of the div
     this.x_pos = e.clientX - this.editorElement.offsetLeft;
     this.y_pos = e.clientY - this.editorElement.offsetTop;
-    this.dragging = true
-
-    // console.log("client");
-    // console.log(e.clientX, e.clientY);
-    // console.log(this.y_pos, this.x_pos);
-
-    // console.log("offset");
-    // console.log(elElemento.offsetLeft, elElemento.offsetTop);
-
-    // console.log("pos");
-    // console.log(x_pos, y_pos);
-    // window.addEventListener('mousemove', this.divMove(e, this.editorElement), true);
-  }
     
-  onSubmit(form){
-    console.log(form);
+    // set this.dragging = true to make the editor draggable
+    this.dragging = true
   }
 
   /**
@@ -133,24 +118,40 @@ export class EditorComponent implements OnInit {
    * @var form, the form that is sending the data to be updated
    * @var thisProperty, the property of this class which will be saved
    */
-  save(form, thisProperty) { // TODO: cretate all forms for saving new data, with the thisProperty param corresponding to each objectType
+  save(form, thisProperty) {
     console.log(this[thisProperty]);
     // call the service method, here we refer to the method by concatenating '_' and 'Service' with the property being saved
     this['_'+thisProperty+'Service'].save(this[thisProperty]).subscribe(
         response => {
           console.log(response);
           if(response[thisProperty]) {
-            // FIXME: solo para project o si hay imagen. Upload image
-            this._uploadService.makeFileRequest(Config.API_URL+"/project/upload-image/"+response[thisProperty]._id, [], this.filesToUpload, 'image' )
+            // if the object being saved has filesToUpload, then upload image
+            if(this.filesToUpload) { 
+              this._uploadService.makeFileRequest(this.apiUrl+"/project/upload-image/"+response[thisProperty]._id, [], this.filesToUpload, 'image' )
               .then((result: any) => {
-                this.status = 'success';
                 console.log(result);
-                form.reset();
-                // TODO: ver cuando mandar respuesta de exito, comprobar antes si hay imagen o si es project lo que se guarad (porque tendría imagen)
-              });
-              
-            this.message = 'Data saved !!';
-            // TODO: insert the new document in the DOM without reloading page
+                this.status = 'success';
+                this.message = 'Data saved with image !!';
+                
+                // Emit and event to the parent to check the new data saved on db and add it to the component data property. 
+                this.sendDataToParent.emit({object: response[thisProperty], type: 'create'});
+              })
+              .catch(error => {
+                console.log(error);
+                this.status = 'error';
+                this.message = 'Data saved but ERROR with image !!';
+              }
+              );
+            } else {
+              // message if there is not image to upload
+              this.status = 'success';
+              this.message = 'Data saved !!';
+
+              // Emit and event to the parent to check the new data saved on db and add it to the component data property. 
+              this.sendDataToParent.emit({object: response[thisProperty], type: 'create'});
+            }
+            // reset the form            
+            form.reset();            
           } else {
             this.status = 'error';
             this.message = 'Save error!!';
@@ -169,6 +170,7 @@ export class EditorComponent implements OnInit {
     }, 3000);
   }
 
+  // Add file to the property when the event ocurs
   fileChangeEvent(fileInput: any) {
     this.filesToUpload = <Array<File>>fileInput.target.files;
   }
@@ -180,7 +182,7 @@ export class EditorComponent implements OnInit {
    * @var service, the service that is needed to update the passed form
    */
   update(form, objectType) { // TODO: cretate all forms for updating data, with the objectType param corresponding to each objectType
-    // assing values from the form to this variable
+    // passing values from the form to this variable
     var dataForm = form.form.value;
 
     // create a new object with the received data depending on the param 'objectType'
@@ -194,8 +196,30 @@ export class EditorComponent implements OnInit {
         response => {
           console.log(response);
           if(response[preparedData.sucProp]) {
-            this.status = 'success';
-            this.message = 'Data saved !!';
+            // if the object being saved has filesToUpload, then upload image
+            if(this.filesToUpload) {
+              this._uploadService.makeFileRequest(this.apiUrl+"/project/upload-image/"+response[preparedData.sucProp]._id, [], this.filesToUpload, 'image' )
+              .then((result: any) => {
+                console.log(result);
+                this.status = 'success';
+                this.message = 'Data saved with image !!';
+
+                // Emit and event to the parent to check the data updated on db and change it on the component data property. 
+                this.sendDataToParent.emit({object: response[preparedData.sucProp], type: 'update'});
+              })
+              .catch(error => {
+                console.log(error);
+                this.status = 'error';
+                this.message = 'Data saved but ERROR with image !!';
+              }
+              );
+            } else {
+              this.status = 'success';
+              this.message = 'Data saved !!';
+
+              // Emit and event to the parent to check the data updated on db and change it on the component data property. 
+              this.sendDataToParent.emit({object: response[preparedData.sucProp], type: 'update'});
+            }
           } else {
             this.status = 'error';
             this.message = 'Save error!!';
@@ -211,6 +235,34 @@ export class EditorComponent implements OnInit {
     // remove the respnose by changing this.status value
     setTimeout(() => {
       this.status = null;
+    }, 3000);
+  }
+
+  
+  // method for deleting documents
+  delete(id, thisProperty) {
+    this['_'+thisProperty+'Service'].delete(id).subscribe(
+      response => {
+        console.log(response);
+        if(response[thisProperty+'Deleted']) {
+          this.status = 'success';
+          this.message = 'Data deleted !!';
+          // Emit and event to the parent to remove the deleted data
+          this.sendDataToParent.emit({object: response[thisProperty+'Deleted'], type: 'delete'});
+        } else {
+          this.status = 'error';
+          this.message = 'Delete error !!';
+        }
+      },
+      error => {
+        console.log(<any>error);
+      }
+    );
+
+    // remove the respnose by changing this.status value
+    setTimeout(() => {
+      this.status = null;
+      this.message = null;
     }, 3000);
   }
 
@@ -229,7 +281,7 @@ export class EditorComponent implements OnInit {
         // service name
         var serviceName = '_personalDataService';
         break;
-      // TODO: create all updating forms and his service name as param on the onSubmit's function
+      
       case 'Skill':
         // create updating Object
         updatingData = new Skill(dataForm._id, dataForm.key, dataForm.text, dataForm.value);
@@ -241,8 +293,8 @@ export class EditorComponent implements OnInit {
 
       case 'Experience':
         // create updating Object
-        var start = new Date(dataForm.start);
-        var end = new Date(dataForm.end);
+        var start = dataForm.start != '' ? new Date(dataForm.start) : '';
+        var end = dataForm.end != '' ? new Date(dataForm.end)  : '';
         updatingData = new Experience(dataForm._id, dataForm.key, { start, end }, dataForm.company, dataForm.rol, dataForm.description );
         // expected property in success case
         var sucProperty = 'experienceUpdated';
@@ -252,8 +304,8 @@ export class EditorComponent implements OnInit {
 
       case 'Education':
         // create updating Object
-        var start = new Date(dataForm.start);
-        var end = new Date(dataForm.end);
+        var start = dataForm.start != '' ? new Date(dataForm.start) : '';
+        var end = dataForm.end != '' ? new Date(dataForm.end)  : '';
         updatingData = new Education(dataForm._id, dataForm.key, { start, end }, dataForm.center, dataForm.name, dataForm.clarification, dataForm.link );
         // expected property in success case
         var sucProperty = 'educationUpdated';
@@ -279,33 +331,6 @@ export class EditorComponent implements OnInit {
     }
 
 
-  }
-
-
-  // method for deleting documents
-  delete(id) {
-    console.log(id);
-    this._personalDataService.delete(id).subscribe(
-      response => {
-        console.log(response);
-        if(response.personalDataDeleted) {
-          this.status = 'success';
-          this.message = 'Data deleted !!';
-          // TODO: reloads de forms to not display the deleted one
-        } else {
-          this.status = 'error';
-          this.message = 'Delete error !!';
-        }
-      },
-      error => {
-        console.log(<any>error);
-      }
-    );
-    // remove the respnose by changing this.status value
-    setTimeout(() => {
-      this.status = null;
-      this.message = null;
-    }, 3000);
   }
 
 }

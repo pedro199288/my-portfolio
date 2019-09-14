@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { faUniversity, faGraduationCap, faQuestion } from '@fortawesome/free-solid-svg-icons';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'education-item',
@@ -13,7 +14,9 @@ export class EducationItemComponent implements OnInit {
   faQuestion = faQuestion;
 
 
-  constructor() { }
+  constructor(
+    private sanitizer: DomSanitizer,
+  ) { }
 
   ngOnInit() {
   }

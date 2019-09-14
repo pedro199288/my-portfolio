@@ -3,8 +3,8 @@ export class Education {
         public _id: string,
         public key: string,
         public date: {
-            start: Date,
-            end: Date,
+            start: Date | string,
+            end: Date | string,
         },
         public center: string,
         public name: string,

@@ -25,6 +25,7 @@ export  class UploadService {
                     if(xhr.status == 200) {
                         resolve(JSON.parse(xhr.response));
                     } else {
+                        console.log('salta reject');
                         reject(xhr.response);
                     }
                 }

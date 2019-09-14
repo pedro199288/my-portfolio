@@ -5,6 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
+// for Json Web Tokens
+import { JwtModule } from '@auth0/angular-jwt'; 
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './auth.guard';
+import { UserService } from './services/user.service';
+
 import { AppComponent } from './app.component';
 import { HeroHomeComponent } from './components/hero-home/hero-home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -21,6 +27,13 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ViewHomeComponent } from './views/view-home/view-home.component';
 import { ViewProjectComponent } from './views/view-project/view-project.component';
 import { EditorComponent } from './components/editor/editor.component';
+import { LoginComponent } from './components/login/login.component';
+
+// for JWT
+export function tokenGetter(): string {
+  return localStorage.getItem('access_token');
+}
+
 
 @NgModule({
   declarations: [
@@ -40,15 +53,28 @@ import { EditorComponent } from './components/editor/editor.component';
     FooterComponent,
     ViewProjectComponent,
     EditorComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    // for JWT
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ['localhost:3700'],
+        blacklistedRoutes: ['localhost:3700/api/auth']
+      }
+    })
   ],
-  providers: [],
+  providers: [
+    UserService,
+    AuthService,
+    AuthGuard,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

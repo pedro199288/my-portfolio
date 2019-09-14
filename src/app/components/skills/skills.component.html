@@ -8,4 +8,4 @@
         </skill>
     </div>
 </div>
-<editor [data]="skills" [dataName]="'skills'"></editor>
+<editor [data]="skills" [dataName]="'skills'" (sendDataToParent)="eventFromChild($event)"></editor>

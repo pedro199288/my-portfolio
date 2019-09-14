@@ -6,8 +6,8 @@
 </div>
 
 <div class="rounded-box experience-date" *ngIf="exp_item.date.end != ''">
-    {{ exp_item.date.start + ' - '+ exp_item.date.end }}
+    {{ exp_item.date.start | date : 'MMM yyyy' }} - {{ exp_item.date.end | date: 'MMM yyyy' }}
 </div>
 <div class="rounded-box experience-date" *ngIf="exp_item.date.end == ''">
-    {{ exp_item.date.start + ' - till today' }}
+    {{ exp_item.date.start | date : 'MMM yyyy' }} - till today
 </div>

@@ -46,7 +46,7 @@
                   </div>
 
                 </form>
-                <button (click)="delete(dataElement._id)" class="btn">Delete</button>
+                <button (click)="delete(dataElement._id, 'personalData')" class="btn">Delete</button>
             </div>
 
             <form #newPersonalData="ngForm" (ngSubmit)="save(newPersonalData, 'personalData')">
@@ -107,7 +107,7 @@
                     </div>
 
                   </form>
-                  <button (click)="delete(dataElement._id)" class="btn">Delete</button>
+                  <button (click)="delete(dataElement._id, 'skill')" class="btn">Delete</button>
               </div>
 
               <form #newSkill="ngForm" (ngSubmit)="save(newSkill, 'skill')">
@@ -182,7 +182,7 @@
                     </div>
 
                   </form>
-                  <button (click)="delete(dataElement._id)" class="btn">Delete</button>
+                  <button (click)="delete(dataElement._id, 'experience')" class="btn">Delete</button>
               </div>
 
               <form #newExperience="ngForm" (ngSubmit)="save(newExperience, 'experience')">
@@ -273,7 +273,7 @@
                     </div>
 
                   </form>
-                  <button (click)="delete(dataElement._id)" class="btn">Delete</button>
+                  <button (click)="delete(dataElement._id, 'education')" class="btn">Delete</button>
               </div>
 
               <form #newEducation="ngForm" (ngSubmit)="save(newEducation, 'education')">
@@ -339,8 +339,10 @@
                     </div>
 
                     <div class="form-item">
-                      <!-- <label>current image</label> -->
-                      <!-- <img src=""> TODO: ver como traer img del servidor -->
+                      <label>current image</label>
+                      <div *ngIf="dataElement.image">
+                        <img width="100" src="{{ apiUrl+'/project/get-image/'+dataElement.image }}" alt="{{dataElement.image}}">
+                      </div>
                       <label for="image">image</label>
                       <input type="file" name="image" (change)="fileChangeEvent($event)">
                     </div>
@@ -371,7 +373,7 @@
                     </div>
 
                   </form>
-                  <button (click)="delete(dataElement._id)" class="btn">Delete</button>
+                  <button (click)="delete(dataElement._id, 'project')" class="btn">Delete</button>
               </div>
 
               <form #newProject="ngForm" (ngSubmit)="save(newProject, 'project')">
@@ -426,4 +428,4 @@
   </div>
       
 </div>
-<span class="btn-edit" (click)="this.active = true"><fa-icon [icon]="faPencilAlt"></fa-icon> Edit</span>
+<span class="btn-edit" (click)="this.active = true"> Edit</span>
