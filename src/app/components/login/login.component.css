@@ -1,0 +1,15 @@
+h2, div { 
+    width: 100%;
+}
+
+.form-container {
+    min-height: 60vh;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+
+input {
+    border: 1px solid #eee;
+}

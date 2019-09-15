@@ -1,0 +1,79 @@
+.hero {
+    position: relative;   
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 25vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10rem;
+}
+
+.hero .hero-content {
+    z-index: 2;
+}
+
+.hero h2 {
+    font-size: 2.2rem;
+}
+
+.wrapper {
+    padding: 1.5rem;
+    margin-bottom: 10rem;
+}
+
+.project-image {
+    max-width: 340px;
+    margin: 0 auto;
+}
+
+.project-image,
+.tools,
+.company,
+.website {
+    margin-bottom: 2rem;
+}
+
+.project-image img {
+    width: 100%;
+}
+
+.tools h4,
+.company h4,
+.website h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1.8rem;
+}
+
+.tools li,
+.company p,
+.website a {
+   color: #777;
+}
+
+.right-col h2 {
+    font-size: 2rem;
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.right-col h2 i {
+    font-size: 2.2rem;
+}
+
+.project-description {
+    font-size: 1.8rem;
+    line-height: 3.5rem;
+    color: #777;
+}
+
+
+@media only screen and (min-width: 720px) {
+    .grid-view-project {
+        display: grid;
+        grid-template-columns: 25% 75%;
+        grid-column-gap: 5rem;
+    }
+    
+}

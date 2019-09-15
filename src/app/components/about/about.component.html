@@ -4,8 +4,8 @@
     <div class="div-side content-to-right">
       <div *ngFor="let dataElement of dataLeft" class="about-data-item">
         <h3>{{ dataElement.text }}</h3>
-        <!-- TODO: change this to show a date from db formated with angular pipe <p *ngIf="dataElement.key == 'birthDay'">{{ dataElement.value | date }}</p> -->
-        <p>{{ dataElement.value }}</p>
+        <p *ngIf="dataElement.key == 'birthDay'">{{ dataElement.value | date: 'yyyy/MM/dd' }}</p>
+        <p *ngIf="dataElement.key != 'birthDay'">{{ dataElement.value }}</p>
       </div>
     </div>
     <div class="div-side content-to-left">
@@ -18,4 +18,4 @@
   </div>
   <div *ngIf="description" class="wrapper" id="about-description" [innerHTML]="description.value"></div>
 </div>
-<editor [data]="personalData" [dataName]="'personalData'" (sendDataToParent)="eventFromChild($event)"></editor>
+<editor *ngIf="auth.loggedIn" [data]="personalData" [dataName]="'personalData'" (sendDataToParent)="eventFromChild($event)"></editor>

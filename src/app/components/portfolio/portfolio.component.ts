@@ -2,19 +2,25 @@ import { Component, OnInit } from '@angular/core';
 import { ProjectService } from '../../services/project.service';
 import { Project } from 'src/app/models/Project';
 import { Config } from 'src/app/config/config';
+import { AuthService } from '../../services/auth.service';
+
 
 @Component({
   selector: 'portfolio',
   templateUrl: './portfolio.component.html',
   styleUrls: ['./portfolio.component.css'],
-  providers: [ProjectService]
+  providers: [
+    ProjectService,
+    AuthService
+  ]
 })
 export class PortfolioComponent implements OnInit {
   projects: Project[];
   apiUrl: string;
 
   constructor(
-    private _projectService: ProjectService
+    private _projectService: ProjectService,
+    private auth: AuthService
   ) {
     this._projectService.getAll().subscribe(
       result => {

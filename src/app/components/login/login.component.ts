@@ -27,4 +27,10 @@ export class LoginComponent{
       );
   }
 
+  logout(){
+    this.auth.logout();
+    alert('logued out correctly');
+    this.router.navigate(['']);
+  }
+
 }

@@ -2,12 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { Helper } from 'src/app/services/helper.service';
 import { PersonalDataService } from '../../services/personal-data.service';
 import { PersonalData } from '../../models/PersonalData';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'about',
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css'],
-  providers: [PersonalDataService]
+  providers: [
+    PersonalDataService,
+    AuthService
+  ]
 })
 export class AboutComponent implements OnInit {
   public personalData: PersonalData[];
@@ -16,7 +20,8 @@ export class AboutComponent implements OnInit {
   public description;
 
   constructor(
-    private _personalDataService: PersonalDataService
+    private _personalDataService: PersonalDataService,
+    private auth: AuthService
   ) {
   }
   

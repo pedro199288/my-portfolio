@@ -8,4 +8,4 @@
   </education-item>
   </div>
 </div>
-<editor [data]="education" [dataName]="'education'" (sendDataToParent)="eventFromChild($event)"></editor>
+<editor *ngIf="auth.loggedIn" [data]="education" [dataName]="'education'" (sendDataToParent)="eventFromChild($event)"></editor>

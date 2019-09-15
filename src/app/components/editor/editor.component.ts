@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, HostListener, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, HostListener, Output, ViewEncapsulation } from '@angular/core';
 import { Config } from '../../config/config';
 
 // models
@@ -18,6 +18,7 @@ import { UploadService } from '../../services/upload.service';
 
 @Component({
   selector: 'editor',
+  encapsulation: ViewEncapsulation.None,
   templateUrl: './editor.component.html',
   styleUrls: ['./editor.component.css'],
   providers: [
@@ -71,8 +72,8 @@ export class EditorComponent implements OnInit {
       // assign component's objects to the properties, to be used when creating a new object with the editor component
       this.personalData = new PersonalData('', '', '', '', false);
       this.skill = new Skill('', '', '', 0);
-      this.experience = new Experience('', '', {start: new Date, end: new Date}, '', '', '');
-      this.education = new Education('', '', {start: new Date, end: new Date}, '', '', '', '');
+      this.experience = new Experience('', '', {start: '', end: ''}, '', '', '');
+      this.education = new Education('', '', {start: '', end: ''}, '', '', '', '');
       this.project = new Project('', '', '', '', [''], '', '', '');
   }
   
@@ -128,19 +129,19 @@ export class EditorComponent implements OnInit {
             // if the object being saved has filesToUpload, then upload image
             if(this.filesToUpload) { 
               this._uploadService.makeFileRequest(this.apiUrl+"/project/upload-image/"+response[thisProperty]._id, [], this.filesToUpload, 'image' )
-              .then((result: any) => {
-                console.log(result);
-                this.status = 'success';
-                this.message = 'Data saved with image !!';
-                
-                // Emit and event to the parent to check the new data saved on db and add it to the component data property. 
-                this.sendDataToParent.emit({object: response[thisProperty], type: 'create'});
-              })
-              .catch(error => {
-                console.log(error);
-                this.status = 'error';
-                this.message = 'Data saved but ERROR with image !!';
-              }
+                .then((result: any) => {
+                  console.log(result);
+                  this.status = 'success';
+                  this.message = 'Data saved with image !!';
+                  
+                  // Emit and event to the parent to check the new data saved on db and add it to the component data property. 
+                  this.sendDataToParent.emit({object: result.projectUpdated, type: 'create'});
+                })
+                .catch(error => {
+                  console.log(error);
+                  this.status = 'error';
+                  this.message = 'Data saved but ERROR with image !!';
+                }
               );
             } else {
               // message if there is not image to upload
@@ -160,7 +161,7 @@ export class EditorComponent implements OnInit {
         error => {
           console.log(<any>error);
           this.status = 'error';
-          this.message = null;
+          this.message = 'ERROR: ' + error.statusText;
         }
     );
 
@@ -181,7 +182,7 @@ export class EditorComponent implements OnInit {
    * @var form, the form that is sending the data to be updated
    * @var service, the service that is needed to update the passed form
    */
-  update(form, objectType) { // TODO: cretate all forms for updating data, with the objectType param corresponding to each objectType
+  update(form, objectType) {
     // passing values from the form to this variable
     var dataForm = form.form.value;
 
@@ -205,7 +206,7 @@ export class EditorComponent implements OnInit {
                 this.message = 'Data saved with image !!';
 
                 // Emit and event to the parent to check the data updated on db and change it on the component data property. 
-                this.sendDataToParent.emit({object: response[preparedData.sucProp], type: 'update'});
+                this.sendDataToParent.emit({object: result.projectUpdated, type: 'update'});
               })
               .catch(error => {
                 console.log(error);
@@ -228,7 +229,7 @@ export class EditorComponent implements OnInit {
         error => {
           console.log(<any>error);
           this.status = 'error';
-          this.message = null;
+          this.message = 'ERROR: ' + error.statusText;
         }
     );
 

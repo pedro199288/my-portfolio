@@ -1,14 +1,21 @@
-<h4 *ngIf="error">{{error}}</h4>
-<form (ngSubmit)="submit()">
-  <div class="form-item">
-    <label for="username">Username</label>
-    <input type="text" name="username" [(ngModel)]="username" />
+<div class="form-container">
+  <h2>Admin login:</h2>
+  <div>
+    <h4 class="message error" *ngIf="error">{{error}}</h4>
   </div>
-  <div class="form-item">
-    <label for="password">Password</label>
-    <input type="password" name="password" [(ngModel)]="password" />
-  </div>
-  <div class="form-item">
-    <button class="btn btn-primary" type="submit">Login</button>
-  </div>
-</form>
+  <form (ngSubmit)="submit()" class="form">
+    <div class="form-item">
+      <label for="username">Username</label>
+      <input type="text" name="username" [(ngModel)]="username" />
+    </div>
+    <div class="form-item">
+      <label for="password">Password</label>
+      <input type="password" name="password" [(ngModel)]="password" />
+    </div>
+    <div class="form-item">
+      <button class="btn btn-primary" type="submit">Login</button>
+    </div>
+
+    <a (click)="logout()" class="btn">Logout</a>
+  </form>
+</div>

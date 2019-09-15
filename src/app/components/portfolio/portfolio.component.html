@@ -6,12 +6,12 @@
       [ngClass]="{'port-item': true}">
       <div class="img-wrapper">
         <div class="bg-buttons">
-          <a [routerLink]="['/project', project.key]" class="btn btn-primary">See more</a>
+          <a [routerLink]="['/project', project._id]" class="btn btn-primary">See more</a>
           <a target="_blank" href="{{project.website}}" class="btn btn-secondary">Go to website</a>
         </div>
         <img src="{{apiUrl+'/project/get-image/'+project.image}}"> 
       </div>
-      <!-- TODO: optimizar imagen -->
+      
       <a href=""><h4>{{ project.name }}</h4></a>
       <p>
         {{ project.description }}
@@ -19,4 +19,4 @@
     </div>
   </div>
 </div>
-<editor [data]="projects" [dataName]="'projects'" (sendDataToParent)="eventFromChild($event)"></editor>
+<editor *ngIf="auth.loggedIn" [data]="projects" [dataName]="'projects'" (sendDataToParent)="eventFromChild($event)"></editor>

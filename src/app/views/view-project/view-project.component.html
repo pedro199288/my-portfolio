@@ -1,30 +1,45 @@
 <navbar id="navbar"></navbar>
-<div id="view-project">
-  FFJAÑLDFJAÑDKJF 
-  ÑKAJDFKL
-  JÑLKASDJF
-
-  KJADÑFLJKLAJSDFJ
-  AKLÑSDJFÑALK
+<div *ngIf="project" class="hero" [ngStyle]="{backgroundImage : 'url(' + apiUrl + '/project/get-image/' + project.image + ')'}">
+  <div class="bg-gradient rad-gradient-white"></div>
+  <div class="hero-content">
+    <h2>{{ project.name }}</h2>
+  </div>
 </div>
+<div *ngIf="project" class="wrapper">
 
-<div *ngIf="!user">
-  Cargando...
-</div>
+  <div class="grid-view-project">
+    <div class="left-col">
+      <div class="project-image">
+        <img [src]="apiUrl + '/project/get-image/' + project.image" alt="{{project.name}}">
+      </div>
+      <div class="tools">
+        <h4>Used Tools</h4>
+        <ul>
+          <li *ngFor="let tool of project.tools">
+            {{ tool }}
+          </li>
+        </ul>
+      </div>
+      <div class="company">
+        <h4>Made for:</h4>
+        <p>{{ project.company }}</p>
+      </div>
+      <div class="website">
+        <h4>Website:</h4>
+        <a [routerLink]="[ project.website]">{{project.name}}</a>
+      </div>
+    </div>
 
-<div *ngIf="user">
-  <img src="{{user.avatar }}" alt="" width="200">
-  <h3>{{user.first_name + ' ' + user.last_name }}</h3>
-
-</div>
-
-<hr>
-<h2>Crear usuario</h2>
-<form #newUser="ngForm" (ngSubmit)="onSubmit(newUser)">
-  <div class="form-item">
-    Nombre: <input type="text" name="name" #name="ngModel" [(ngModel)]="new_user.name" placeholder="name"><br>
-    job: <input type="text" name="job" #job="ngModel" [(ngModel)]="new_user.job"><br>
+    <div class="right-col">
+      <h2>Project: <i>{{ project.name }}</i></h2>
+      <p class="project-description">
+        {{ project.description}}
+      </p>
+      <div class="project-images">
+        <!-- TODO: add images to the projects -->
+      </div>
+    </div>
   </div>
 
-  <input type="submit" value="guardar">
-</form>
+</div>
+<contact #contact id="contact" class="section"></contact>

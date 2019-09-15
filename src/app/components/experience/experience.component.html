@@ -11,4 +11,4 @@
   </div>
 </div>
 
-<editor [data]="experience" [dataName]="'experience'" (sendDataToParent)="eventFromChild($event)"></editor>
+<editor *ngIf="auth.loggedIn" [data]="experience" [dataName]="'experience'" (sendDataToParent)="eventFromChild($event)"></editor>

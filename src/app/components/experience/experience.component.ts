@@ -1,19 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { Experience } from '../../models/Experience';
 import { ExperienceService } from '../../services/experience.service';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
   selector: 'experience',
   templateUrl: './experience.component.html',
   styleUrls: ['./experience.component.css'],
-  providers: [ExperienceService]
+  providers: [
+    ExperienceService,
+    AuthService
+  ]
 })
 export class ExperienceComponent implements OnInit {
   public experience: Experience[];
   
   constructor(
-    private _experienceService: ExperienceService
+    private _experienceService: ExperienceService,
+    private auth: AuthService
   ) {
 
   }

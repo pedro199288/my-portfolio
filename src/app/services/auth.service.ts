@@ -32,6 +32,7 @@ export class AuthService {
   }
 
   public get loggedIn(): boolean {
+    // TODO: check if access_token is set and its validity and expiration
     return (localStorage.getItem('access_token') !== null);
   }
 }

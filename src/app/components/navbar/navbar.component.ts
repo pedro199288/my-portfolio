@@ -1,20 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { AboutComponent } from '../about/about.component';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
+  providers: [
+    AuthService
+  ]
 })
 export class NavbarComponent implements OnInit {
   public links: any[];
   public showing: boolean;
 
-  constructor() {
+  constructor(
+    private auth: AuthService,
+    private router: Router
+  ) {
     this.showing = false;
     this.links = [
       {
-        "name"    : 'home', // TODO: Cargar los textos con un service en español o inglés según corresponda,
+        "name"    : 'home',
         "active"  : true,
         "route"   : "",
         "reference" : 'hero-home'
@@ -59,6 +67,12 @@ export class NavbarComponent implements OnInit {
     console.log(el);
     let element = document.getElementById(el);
     element.scrollIntoView({block: "start", behavior: "smooth"});
+  }
+
+  logout(){
+    this.auth.logout();
+    alert('logued out correctly');
+    this.router.navigate(['']);
   }
 
 }
