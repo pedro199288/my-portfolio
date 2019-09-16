@@ -44,6 +44,49 @@ h2,h1 {
     color: #333;
 }
 
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--secondary-green);
+    text-decoration: underline;
+}
+
+a.center-link {
+    color: #777;
+    display: block;
+    text-align: center;
+    margin: 3rem auto;
+}
+
+a.center-link svg path {
+    color: #777;
+}
+
+a.center-link.ligth {
+    color: #eee;
+}
+
+a.center-link.ligth svg path {
+    color: #eee;
+}
+
+a.center-link:hover {
+    color: var(--secondary-green);
+    text-decoration: none;
+}
+
+a.center-link:hover svg path {
+    color: var(--secondary-green);
+}
+
+a.center-link .svg-inline--fa {
+    font-size: 1.6rem;
+    margin-right: 0.5rem;
+}
+
+
 .section {
     padding: 5rem 0;
     display: block;
@@ -766,34 +809,34 @@ textarea {
 
 /* portfolio */
 .portfolio-grid {
-    display: grid;
+    display: flex;
     margin: 0 auto;
-    grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
-    grid-template-rows: repeat(auto-fit, minmax(24rem, 24rem));
     justify-content: center;
-    grid-column-gap: 2rem;
-    grid-row-gap: 2rem;
-    width: 95%;
+    flex-wrap: wrap;
+    width: 100%;
     padding: 0.5rem
 }
 
 .port-item {
     position: relative;
+    width: 28rem;
+    height: auto;
+    margin: 3rem 2rem;
 }
 
 .port-item .img-wrapper {
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 22rem;
     overflow: hidden;
 }
-/*TODO: hACER EL ITEM DEL GRID CON MAX-WIDTH, Y CENTRAR EN EL GRID CONTAINER, PARA QUE AUNQUE SEAN 2 COLUMNAS, NO SE HAGAN MUY ANCHAS */
+
 .port-item .img-wrapper .bg-buttons {
     display: none;
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: rgba(15, 15, 15, 0.9);
+    background-color: #777777c2;
 }
 
 .port-item:hover .bg-buttons {
@@ -802,9 +845,17 @@ textarea {
     align-content: center;
 }
 
-.port-item img {
-    min-width: 100%;
-    min-height: 100%;
+.port-item .img  {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.port-item .img-wrapper img {
+    height: 100%;
+    width: 100%;
 }
 
 .port-item > a{

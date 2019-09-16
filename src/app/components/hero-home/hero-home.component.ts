@@ -24,4 +24,10 @@ export class HeroHomeComponent implements OnInit {
   ngOnInit() {
 
   }
+
+  scrollTo(el: string, e) {
+    e.preventDefault();
+    let element = document.getElementById(el);
+    element.scrollIntoView({block: "start", behavior: "smooth"});
+  }
 }

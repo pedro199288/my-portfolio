@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faPlus} from '@fortawesome/free-solid-svg-icons';
 import { ProjectService } from '../../services/project.service';
 import { Project } from 'src/app/models/Project';
 import { Config } from 'src/app/config/config';
@@ -17,7 +18,8 @@ import { AuthService } from '../../services/auth.service';
 export class PortfolioComponent implements OnInit {
   projects: Project[];
   apiUrl: string;
-
+  faPlus = faPlus;
+  
   constructor(
     private _projectService: ProjectService,
     private auth: AuthService

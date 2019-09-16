@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, HostListener, Output, ViewEncapsulation } from '@angular/core';
 import { Config } from '../../config/config';
+import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 
 // models
 import { PersonalData } from 'src/app/models/PersonalData';
@@ -40,7 +41,7 @@ export class EditorComponent implements OnInit {
   public status: string;
   public message: string;
   public apiUrl: string;
-
+  faPencilAlt  = faPencilAlt ;
   // properties with the data coming from the others components
   @Input('data') data: any;
   @Input('dataName') dataName: string;

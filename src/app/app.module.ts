@@ -28,6 +28,10 @@ import { ViewHomeComponent } from './views/view-home/view-home.component';
 import { ViewProjectComponent } from './views/view-project/view-project.component';
 import { EditorComponent } from './components/editor/editor.component';
 import { LoginComponent } from './components/login/login.component';
+import { ViewAboutComponent } from './views/view-about/view-about.component';
+import { ViewExperienceComponent } from './views/view-experience/view-experience.component';
+import { ViewEducationComponent } from './views/view-education/view-education.component';
+import { ViewPortfolioComponent } from './views/view-portfolio/view-portfolio.component';
 
 // for JWT
 export function tokenGetter(): string {
@@ -54,6 +58,10 @@ export function tokenGetter(): string {
     ViewProjectComponent,
     EditorComponent,
     LoginComponent,
+    ViewAboutComponent,
+    ViewExperienceComponent,
+    ViewEducationComponent,
+    ViewPortfolioComponent,
   ],
   imports: [
     BrowserModule,

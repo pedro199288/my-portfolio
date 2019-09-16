@@ -30,7 +30,7 @@ export class NavbarComponent implements OnInit {
       {
         "name"    : 'about',
         "active"  : true,
-        "route"   : "home",
+        "route"   : "about",
         "reference" : 'about'
       },
       {
@@ -54,6 +54,8 @@ export class NavbarComponent implements OnInit {
     ];
   }
 
+  // TODO: make fixed on top when passed Y pageheight, and hide when scrolling down, show when up
+
   ngOnInit() {
     // Filter those links which have active = true
     this.links = this.links.filter(link => link.active );
@@ -61,12 +63,6 @@ export class NavbarComponent implements OnInit {
 
   toggleMenu() {
     this.showing = !this.showing;
-  }
-
-  scrollTo(el: string) {
-    console.log(el);
-    let element = document.getElementById(el);
-    element.scrollIntoView({block: "start", behavior: "smooth"});
   }
 
   logout(){

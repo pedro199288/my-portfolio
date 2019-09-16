@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faPlus} from '@fortawesome/free-solid-svg-icons';
 import { EducationService } from '../../services/education.service';
 import { Education } from 'src/app/models/Education';
 import { AuthService } from '../../services/auth.service';
@@ -14,6 +15,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class EducationComponent implements OnInit {
   public education: Education[];
+  faPlus = faPlus;
 
   constructor(
     private _educationService: EducationService,

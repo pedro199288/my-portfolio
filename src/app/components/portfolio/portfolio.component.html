@@ -3,20 +3,24 @@
   <div class="portfolio-grid">
     <div
       *ngFor="let project of projects" 
-      [ngClass]="{'port-item': true}">
+      class="port-item">
       <div class="img-wrapper">
         <div class="bg-buttons">
           <a [routerLink]="['/project', project._id]" class="btn btn-primary">See more</a>
           <a target="_blank" href="{{project.website}}" class="btn btn-secondary">Go to website</a>
         </div>
-        <img src="{{apiUrl+'/project/get-image/'+project.image}}"> 
+        <div class="img">
+          <img src="{{apiUrl+'/project/get-image/'+project.image}}"> 
+        </div>
       </div>
       
       <a href=""><h4>{{ project.name }}</h4></a>
       <p>
-        {{ project.description }}
+        {{ project.tools }}
       </p>
     </div>
   </div>
+  <a class="center-link btn" [routerLink]="[ '/portfolio' ]"><fa-icon [icon]="faPlus"></fa-icon>See all</a>
+  <!-- TODO: Find out how to make components show x amount of data depending on the route -->
 </div>
 <editor *ngIf="auth.loggedIn" [data]="projects" [dataName]="'projects'" (sendDataToParent)="eventFromChild($event)"></editor>

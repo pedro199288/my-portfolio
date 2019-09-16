@@ -8,4 +8,5 @@
   </education-item>
   </div>
 </div>
+<a class="center-link btn ligth" [routerLink]="[ '/education' ]"><fa-icon [icon]="faPlus"></fa-icon>See all</a>
 <editor *ngIf="auth.loggedIn" [data]="education" [dataName]="'education'" (sendDataToParent)="eventFromChild($event)"></editor>
