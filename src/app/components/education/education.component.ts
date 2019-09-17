@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { faPlus} from '@fortawesome/free-solid-svg-icons';
 import { EducationService } from '../../services/education.service';
 import { Education } from 'src/app/models/Education';
@@ -15,13 +15,18 @@ import { AuthService } from '../../services/auth.service';
 })
 export class EducationComponent implements OnInit {
   public education: Education[];
+  @Input('maxItems') maxItems: object;
   faPlus = faPlus;
 
   constructor(
     private _educationService: EducationService,
     private auth: AuthService
   ) {
-    this._educationService.getAll().subscribe(
+    this.maxItems = this.maxItems ? this.maxItems : null;
+  }
+
+  ngOnInit() {
+    this._educationService.getAll(this.maxItems).subscribe(
       result => {
         this.education = result.education;
       },
@@ -29,9 +34,6 @@ export class EducationComponent implements OnInit {
         console.log(<any>error);
       }
     );
-  }
-
-  ngOnInit() {
   }
 
   // Makes something with the main array with model used in the component (example: education.component has an array with Education objects) dependeing on the data and eventType params received

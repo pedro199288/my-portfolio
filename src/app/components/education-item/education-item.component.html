@@ -2,6 +2,7 @@
   <span *ngIf="edu_item.date.start && edu_item.date.end == '' ">{{ edu_item.date.start | date: 'MMM yyyy' }} - till today</span>
   <span *ngIf="edu_item.date.start && edu_item.date.end">{{ edu_item.date.start | date: 'MMM yyyy' }} - {{ edu_item.date.end | date: 'MMM yyyy' }} </span>
   <span *ngIf="edu_item.date.start == '' && edu_item.date.end">{{ edu_item.date.end | date: 'MMM yyyy' }} </span>
+  <span *ngIf="edu_item.date.start == '' && edu_item.date.end == ''">Working on it! </span>
   <hr>
   <div>
       <fa-icon [icon]="faUniversity"></fa-icon><h3>{{ edu_item.center }}</h3>

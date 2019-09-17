@@ -17,10 +17,10 @@ export class ProjectService{
         this.url = Config.API_URL;
     }
 
-    getAll(): Observable<any> {
+    getAll(limit): Observable<any> {
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-        return this._http.get(this.url+'/project/all');
+        return this._http.get(this.url+'/project/all/'+limit);
     }
 
     getOneById(id): Observable<any> {

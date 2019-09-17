@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { faPlus} from '@fortawesome/free-solid-svg-icons';
 import { ProjectService } from '../../services/project.service';
 import { Project } from 'src/app/models/Project';
@@ -18,13 +18,19 @@ import { AuthService } from '../../services/auth.service';
 export class PortfolioComponent implements OnInit {
   projects: Project[];
   apiUrl: string;
+  @Input('maxItems') maxItems: object;
   faPlus = faPlus;
   
   constructor(
     private _projectService: ProjectService,
     private auth: AuthService
   ) {
-    this._projectService.getAll().subscribe(
+    this.apiUrl = Config.API_URL;
+    this.maxItems = this.maxItems ? this.maxItems : null;
+  }
+  
+  ngOnInit() {
+    this._projectService.getAll(this.maxItems).subscribe(
       result => {
         this.projects = result.projects;
       },
@@ -32,11 +38,6 @@ export class PortfolioComponent implements OnInit {
         console.log(<any>error);
       }
     )
-
-    this.apiUrl = Config.API_URL;
-  }
-
-  ngOnInit() {
   }
 
   // Makes something with the main array with model used in the component (example: education.component has an array with Education objects) dependeing on the data and eventType params received

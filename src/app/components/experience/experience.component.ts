@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Experience } from '../../models/Experience';
 import { ExperienceService } from '../../services/experience.service';
 import { AuthService } from '../../services/auth.service';
@@ -15,17 +15,18 @@ import { AuthService } from '../../services/auth.service';
 })
 export class ExperienceComponent implements OnInit {
   public experience: Experience[];
+  @Input('maxItems') maxItems: object;
   
   constructor(
     private _experienceService: ExperienceService,
     private auth: AuthService
   ) {
-
+    this.maxItems = this.maxItems ? this.maxItems : null;
   }
 
   ngOnInit() {
     var startDateA, startDateB;
-    this._experienceService.getAll().subscribe(
+    this._experienceService.getAll(this.maxItems).subscribe(
       result => {
         this.experience = result.experience;
 

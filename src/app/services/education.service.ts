@@ -17,10 +17,10 @@ export class EducationService{
         this.url = Config.API_URL;
     }
 
-    getAll(): Observable<any> {
+    getAll(limit): Observable<any> {
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
-
-        return this._http.get(this.url+'/education/all');
+        
+        return this._http.get(`${this.url}/education/all/${limit}`);
     }
 
     getOneById(id): Observable<any> {

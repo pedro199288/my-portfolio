@@ -20,7 +20,6 @@
       </p>
     </div>
   </div>
-  <a class="center-link btn" [routerLink]="[ '/portfolio' ]"><fa-icon [icon]="faPlus"></fa-icon>See all</a>
-  <!-- TODO: Find out how to make components show x amount of data depending on the route -->
+  <a *ngIf="maxItems" class="center-link btn" [routerLink]="[ '/portfolio' ]"><fa-icon [icon]="faPlus"></fa-icon>See all</a>
 </div>
 <editor *ngIf="auth.loggedIn" [data]="projects" [dataName]="'projects'" (sendDataToParent)="eventFromChild($event)"></editor>
