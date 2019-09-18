@@ -75,7 +75,7 @@ export class EditorComponent implements OnInit {
       this.skill = new Skill('', '', '', 0);
       this.experience = new Experience('', '', {start: '', end: ''}, '', '', '');
       this.education = new Education('', '', {start: '', end: ''}, '', '', '', '');
-      this.project = new Project('', '', '', '', [''], '', '', '');
+      this.project = new Project('','',1000,'', '', [''], '', '', '');
   }
   
   ngOnInit() {
@@ -317,7 +317,7 @@ export class EditorComponent implements OnInit {
 
       case 'Project':
         // create updating Object
-        updatingData = new Project(dataForm._id, dataForm.key, dataForm.name, dataForm.company, dataForm.tools, dataForm.description, dataForm.website, dataForm.image );
+        updatingData = new Project(dataForm._id, dataForm.key, dataForm.order, dataForm.name, dataForm.company, dataForm.tools, dataForm.description, dataForm.website, dataForm.image );
         // expected property in success case
         var sucProperty = 'projectUpdated';
         // service name

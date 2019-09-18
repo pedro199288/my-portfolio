@@ -334,6 +334,11 @@
                     </div>
 
                     <div class="form-item">
+                      <label for="order">Order</label>
+                      <input type="number" name="order" #order="ngModel" [(ngModel)]="dataElement.order">
+                    </div>
+
+                    <div class="form-item">
                       <label for="name">Name</label>
                       <input type="text" name="name" #name="ngModel" [(ngModel)]="dataElement.name">
                     </div>
@@ -384,6 +389,11 @@
                 <div class="form-item">
                   <label for="key">Key</label>
                   <input type="text" name="key" #key="ngModel" [(ngModel)]="project.key">
+                </div>
+
+                <div class="form-item">
+                  <label for="order">Order</label>
+                  <input type="number" name="order" #order="ngModel" [(ngModel)]="project.order">
                 </div>
 
                 <div class="form-item">

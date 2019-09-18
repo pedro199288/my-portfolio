@@ -48,16 +48,16 @@ a {
     text-decoration: none;
 }
 
-a:hover {
-    color: var(--secondary-green);
-    text-decoration: underline;
-}
-
 a.center-link {
     color: #777;
     display: block;
     text-align: center;
     margin: 3rem auto;
+}
+
+a.center-link:hover {
+    text-decoration: underline;
+    color: var(--secondary-green);
 }
 
 a.center-link svg path {

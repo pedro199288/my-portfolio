@@ -2,6 +2,7 @@ export class Project {
     constructor(
         public _id: string,
         public key: string,
+        public order: number,
         public name: string,
         public company: string,
         public tools: [string],
