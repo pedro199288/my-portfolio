@@ -32,8 +32,7 @@ export class ViewProjectComponent implements OnInit {
     });
     
     this._projectService.getOneById(this.id).subscribe(
-      result => {
-        console.log(result);
+      result => {        
         this.project = result.project;
       },
       error => {

@@ -88,7 +88,6 @@ export class EditorComponent implements OnInit {
   @HostListener('document:mousemove', ['$event']) 
   onMouseMove(e) {
     if (this.dragging === true) { // Only will drag the component if this.dragging === true, this is when mousedown on editor's head
-      this.editorElement.style.position = 'fixed';
       this.editorElement.style.top = (e.clientY - this.y_pos) + 'px';
       this.editorElement.style.left = (e.clientX - this.x_pos) + 'px';
     }
@@ -102,7 +101,7 @@ export class EditorComponent implements OnInit {
     }
   }
     
-  // TODO: Documentate right this function and remove unnecessary comments
+
   drag(e){
     // select the draggable element
     this.editorElement = document.querySelector('.editor.editor-active');
@@ -114,6 +113,13 @@ export class EditorComponent implements OnInit {
     // set this.dragging = true to make the editor draggable
     this.dragging = true
   }
+
+  // opens/closes the editor and emit that to parent, to change its margin
+  toggle(){
+    this.active = !this.active; 
+    this.sendDataToParent.emit({ type: 'toggle'});
+  }
+
 
   /**
    *  method for saving new documents of the components

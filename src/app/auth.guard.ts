@@ -13,21 +13,21 @@ export class AuthGuard implements CanActivate {
     private router: Router 
   ) { }
 
-  // TODO: For our demo application, we are simply checking for the existence of a JWT in local storage. In real-world applications, you would decode the token and check its validity, expiration, etc. For example, you could use JwtHelperService for this.
+  // check if jwt is valid and if it is, let the user in.... I AM NOT USING THIS FUNCTIONALLITY, BUT KEEP IT HERE AS EXAMPLE
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const jwtHelper = new JwtHelperService(); 
 
     if(localStorage.getItem('access_token')) {
       const myJwt = localStorage.getItem('access_token');
       // check validity and expiration
-      const decodedToken = jwtHelper.decodeToken(myJwt);
+      const decodedToken = jwtHelper.decodeToken(myJwt); // with this we could check if the user have permissions to do something
       const expirationDate = jwtHelper.getTokenExpirationDate(myJwt);
       const isExpired = jwtHelper.isTokenExpired(myJwt);
 
-      console.log(decodedToken, expirationDate, isExpired);
-
-
-      return true;
+      // if token not expired, allow entry
+      if(!isExpired) return true;
+      
+      return false;
     }
 
     this.router.navigate(['login']);

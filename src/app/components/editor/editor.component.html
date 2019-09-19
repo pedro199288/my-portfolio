@@ -2,7 +2,7 @@
   <div class="editor-wrapper">
       <div class="box-header" (mousedown)="drag($event)">
         <h3>Portfolio Editor</h3>
-        <span class="closeable" (click)="this.active = false">x</span>
+        <span class="closeable" (click)="this.toggle()">x</span>
         
         <div *ngIf="status == 'success'" class="message success">
           {{message}}
@@ -438,4 +438,4 @@
   </div>
       
 </div>
-<span class="btn-edit" (click)="this.active = true"><fa-icon [icon]="faPencilAlt"></fa-icon>Edit</span>
+<span class="btn-edit" (click)="this.toggle()"><fa-icon [icon]="faPencilAlt"></fa-icon>Edit</span>

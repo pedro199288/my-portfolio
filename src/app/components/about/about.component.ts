@@ -18,11 +18,13 @@ export class AboutComponent implements OnInit {
   public dataLeft;
   public dataRight;
   public description;
+  public editing;
 
   constructor(
     private _personalDataService: PersonalDataService,
     private auth: AuthService
   ) {
+    this.editing = false;
   }
   
   
@@ -53,21 +55,26 @@ export class AboutComponent implements OnInit {
 
   // Makes something with the main array with model used in the component (example: education.component has an array with Education objects) dependeing on the data and eventType params received
   eventFromChild(data) {
-    // get the id and the index, only used for update and delete cases.
-    const id = data.object._id;
-    const index = this.personalData.findIndex(object => object._id === id);
-
-    if(data.type == 'create') {
-      // add the new object to the array containing model objects
-      this.personalData.push(data.object)
-    } else if (data.type == 'update') {
-      // update the object on the index where the id has been found
-      this.personalData[index] = data.object;
-
-    } else if (data.type == 'delete') {
-      // delete the object of the index where the id has been found
-      this.personalData.splice(index, 1);
+    if(data.type != 'toggle') {
+      // get the id and the index, only used for update and delete cases.
+      const id = data.object._id;
+      const index = this.personalData.findIndex(object => object._id === id);
+      
+      if(data.type == 'create') {
+        // add the new object to the array containing model objects
+        this.personalData.push(data.object)
+      } else if (data.type == 'update') {
+        // update the object on the index where the id has been found
+        this.personalData[index] = data.object;
+  
+      } else if (data.type == 'delete') {
+        // delete the object of the index where the id has been found
+        this.personalData.splice(index, 1);
+      }
+    } else {
+      this.editing = !this.editing;
     }
+    
   }
 
 }

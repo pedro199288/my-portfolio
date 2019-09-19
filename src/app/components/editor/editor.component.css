@@ -9,7 +9,7 @@
     background: #fff;
     display: none;
     top: 50%;
-    left: 50%;
+    left: 75%;
     transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
@@ -34,7 +34,7 @@
 
 .editor.editor-active {
     display: block;
-    position: fixed;
+    position: absolute;
 }
 
 .editor .editor-wrapper {

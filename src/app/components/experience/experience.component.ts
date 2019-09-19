@@ -15,6 +15,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class ExperienceComponent implements OnInit {
   public experience: Experience[];
+  public editing;
   @Input('maxItems') maxItems: object;
   
   constructor(
@@ -22,6 +23,7 @@ export class ExperienceComponent implements OnInit {
     private auth: AuthService
   ) {
     this.maxItems = this.maxItems ? this.maxItems : null;
+    this.editing = false;
   }
 
   ngOnInit() {
@@ -45,20 +47,24 @@ export class ExperienceComponent implements OnInit {
 
   // Makes something with the main array with model used in the component (example: education.component has an array with Education objects) dependeing on the data and eventType params received
   eventFromChild(data) {
-    // get the id and the index, only used for update and delete cases.
-    const id = data.object._id;
-    const index = this.experience.findIndex(object => object._id === id);
-
-    if(data.type == 'create') {
-      // add the new object to the array containing model objects
-      this.experience.push(data.object)
-    } else if (data.type == 'update') {
-      // update the object on the index where the id has been found
-      this.experience[index] = data.object;
-
-    } else if (data.type == 'delete') {
-      // delete the object of the index where the id has been found
-      this.experience.splice(index, 1);
+    if(data.type != 'toggle') {
+      // get the id and the index, only used for update and delete cases.
+      const id = data.object._id;
+      const index = this.experience.findIndex(object => object._id === id);
+      
+      if(data.type == 'create') {
+        // add the new object to the array containing model objects
+        this.experience.push(data.object)
+      } else if (data.type == 'update') {
+        // update the object on the index where the id has been found
+        this.experience[index] = data.object;
+  
+      } else if (data.type == 'delete') {
+        // delete the object of the index where the id has been found
+        this.experience.splice(index, 1);
+      }
+    } else {
+      this.editing = !this.editing;
     }
   }
 }

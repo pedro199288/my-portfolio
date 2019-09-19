@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'experience', component : ViewExperienceComponent },
   { path: 'education', component : ViewEducationComponent },
   { path: 'portfolio', component : ViewPortfolioComponent },
-  { path: 'project/:id', component : ViewProjectComponent, canActivate: [AuthGuard] }, // with canActivate, we check the jwt before enter in that route
+  { path: 'project/:id', component : ViewProjectComponent }, // with canActivate, we check the jwt before enter in that route
   { path: 'login', component : LoginComponent },
 ];
 
