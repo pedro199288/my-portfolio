@@ -29,7 +29,6 @@ export class AuthService {
           return true;
         })
       )
-      // TODO: add errorhandling 
   }
 
   logout() {

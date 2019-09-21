@@ -18,6 +18,7 @@ export class EducationComponent implements OnInit {
   public editing;
   @Input('maxItems') maxItems: object;
   faPlus = faPlus;
+  icon;
 
   constructor(
     private _educationService: EducationService,

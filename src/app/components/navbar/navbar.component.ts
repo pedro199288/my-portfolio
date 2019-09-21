@@ -59,6 +59,8 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     // Filter those links which have active = true
     this.links = this.links.filter(link => link.active );
+
+    //this.dislayControl();
   }
 
   toggleMenu() {
@@ -69,6 +71,31 @@ export class NavbarComponent implements OnInit {
     this.auth.logout();
     alert('logued out correctly');
     this.router.navigate(['']);
+  }
+
+  dislayControl(){
+    // Animate navbar when scrolling up or down
+    var navBar = document.getElementById("navbar");
+    if(navBar){
+      console.log(navBar.offsetTop); // TODO: ver que tengo que obtener del navbar
+        // last position of scrollTop
+        var lastScrollTop = 0;
+        
+        // detect scroll direction
+        window.addEventListener("scroll", function(){ 
+            if (window.pageYOffset > 90 || document.documentElement.scrollTop > 90) {
+                var st = window.pageYOffset || document.documentElement.scrollTop;
+                if (st > lastScrollTop){
+                    // downscroll code
+                    navBar.style.top = "-80px";
+                } else {
+                    // upscroll code
+                    navBar.style.top = "0px";
+                }
+                lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+            }
+        }, false);
+    }
   }
 
 }

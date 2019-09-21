@@ -42,6 +42,7 @@ export class EditorComponent implements OnInit {
   public message: string;
   public apiUrl: string;
   faPencilAlt  = faPencilAlt ;
+  icon;
   // properties with the data coming from the others components
   @Input('data') data: any;
   @Input('dataName') dataName: string;

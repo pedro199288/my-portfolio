@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="25" viewBox="0 0 36 25">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="36" height="25" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Repetir_cuadrícula_1" data-name="Repetir cuadrícula 1" clip-path="url(#clip-path)">
+    <g transform="translate(-68 -527)">
+      <rect id="Rectángulo_7" data-name="Rectángulo 7" width="35" height="5" rx="2.5" transform="translate(68 527)" fill="#333"/>
+    </g>
+    <g transform="translate(-68 -518)">
+      <rect id="Rectángulo_7-2" data-name="Rectángulo 7" width="35" height="5" rx="2.5" transform="translate(68 527)" fill="#333"/>
+    </g>
+    <g transform="translate(-68 -509)">
+      <rect id="Rectángulo_7-3" data-name="Rectángulo 7" width="35" height="5" rx="2.5" transform="translate(68 527)" fill="#333"/>
+    </g>
+  </g>
+</svg>

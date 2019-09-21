@@ -20,7 +20,7 @@ body {
 }
 
 #page-container {
-    padding-bottom: 11rem;    /* Footer height */
+    padding-bottom: 20rem;    /* Footer height */
 }
 
 * {
@@ -242,6 +242,18 @@ textarea {
     align-items: center;
 }
 
+#hero-home .logo-hero {
+    z-index: 2;
+    position: absolute;
+    top: 3rem;
+    left: 50%;
+    margin-left: -125px;
+}
+
+#hero-home .logo-hero img {
+    width: 250px;
+}
+
 #hero-home .hero-content {
     z-index: 2;
 }
@@ -285,6 +297,12 @@ textarea {
         background-position: center;
     }
 
+    #hero-home .logo-hero {
+        top: 3rem;
+        left: 3rem;
+        margin-left: 0;
+    }
+
     #hero-home .hero-content {
         z-index: 2;
     }
@@ -312,6 +330,11 @@ textarea {
     display: flex;
     align-items: center;
     position: relative;
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
 }
 
 #navbar .nav-desktop ul {
@@ -363,6 +386,13 @@ textarea {
     transition: all ease-in-out 0.3s;
     -webkit-transition: all ease-in-out 0.3s;
     box-shadow: -2px 0px 10px 0px rgb(92, 92, 92);
+}
+
+#navbar .nav-mobile .logo-navbar {
+    position: absolute;
+    top: 2rem;
+    left: 1rem;
+    width: 200px;
 }
 
 #navbar .nav-mobile nav {
@@ -858,8 +888,8 @@ textarea {
 }
 
 .port-item .img-wrapper img {
-    height: 100%;
-    width: 100%;
+    max-height: 100%;
+    max-width: 100%;
 }
 
 .port-item > a{
@@ -921,9 +951,38 @@ textarea {
     position: absolute;
     bottom: 0;
     width: 100%;
+    padding-bottom: 4rem;
+}
+
+#footer .logo-footer {
+    width: 250px;
+    position: relative;
+    margin: 0 auto 3rem auto;
+}
+
+#footer .logo-footer img {
+    width: 250px;
+}
+
+#footer .legal {
+    display: flex;
+    display: none;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 3rem auto;
+}
+
+#footer .legal a {
+    font-size: 1.4rem;
+    color: #fff;
+    margin: 0.5rem 1rem;
+}
+
+#footer .legal a:hover {
+    text-decoration: underline;
 }
 
 #footer p {
-    color: #fff;
+    color: #777;
     text-align: center;
 }

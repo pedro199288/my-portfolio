@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { faPlus} from '@fortawesome/free-solid-svg-icons';
 import { Experience } from '../../models/Experience';
 import { ExperienceService } from '../../services/experience.service';
 import { AuthService } from '../../services/auth.service';
@@ -16,6 +17,7 @@ import { AuthService } from '../../services/auth.service';
 export class ExperienceComponent implements OnInit {
   public experience: Experience[];
   public editing;
+  faPlus = faPlus;
   @Input('maxItems') maxItems: object;
   
   constructor(
