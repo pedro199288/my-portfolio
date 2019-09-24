@@ -1,16 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { ContactMessage } from './../../models/ContactMessage';
+import { Contact } from '../../models/Contact';
+import { ContactService } from '../../services/contact.service';
 
 @Component({
   selector: 'contact',
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css']
+  styleUrls: ['./contact.component.css'],
+  providers: [ContactService]
 })
 export class ContactComponent implements OnInit {
-  public contactMessage: ContactMessage;
+  public contact: Contact;
 
-  constructor() {
-      this.contactMessage = new ContactMessage('','','','');
+  constructor(
+    private contactService: ContactService
+  ) {
+      this.contact = new Contact('', '','','','');
   }
 
   ngOnInit() {
@@ -18,9 +22,18 @@ export class ContactComponent implements OnInit {
   }
 
   onSubmit(form) {
-      console.log(form.form.valid); // Returns true or false depending on the form validity, TODO: use this to print a error message 
-      console.log('submit event triggered');
-      console.log(this.contactMessage);
+      const formIsValid = form.form.valid;
+      console.log(formIsValid); // Returns true or false depending on the form validity, TODO: use this to print a error message 
+      if(formIsValid) {
+        this.contactService.send(this.contact).subscribe(
+          result => {
+            console.log(result);
+          },
+          error => {
+            console.log(<any>error);
+          }
+        );
+      }
   }
 
 }

@@ -9,7 +9,6 @@ import { FormsModule } from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt'; 
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './auth.guard';
-import { UserService } from './services/user.service';
 
 import { AppComponent } from './app.component';
 import { HeroHomeComponent } from './components/hero-home/hero-home.component';
@@ -79,7 +78,6 @@ export function tokenGetter(): string {
     })
   ],
   providers: [
-    UserService,
     AuthService,
     AuthGuard,
   ],
