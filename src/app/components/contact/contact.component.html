@@ -3,18 +3,27 @@
     <p>
       Send me a message if you are interested in knowing more about what I do and what we can achieve by working together.
     </p>
+
+    <div *ngIf="status == 'success'" class="message success">
+      {{messageText}}
+    </div>
+
+    <div *ngIf="status == 'error'" class="message error">
+      {{messageText}}
+    </div>
+
     <div class="form">
       <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
         <div class="form-item">
           <input type="text" name="name" id="name" #name="ngModel" [(ngModel)]="contact.name" required placeholder="Name">
-          <span *ngIf="name.touched && !name.valid">
+          <span class="form-notice" *ngIf="name.touched && !name.valid">
               This field is required
           </span>
         </div>
         <div class="form-item">
-          <input type="email" name="email" id="email" #email="ngModel" [(ngModel)]="contact.email" required placeholder="Email">
-          <span *ngIf="email.touched && !email.valid">
-              This field is required
+          <input type="email" [email]="true" name="email" id="email" #email="ngModel" [(ngModel)]="contact.email" required placeholder="Email">
+          <span class="form-notice" *ngIf="email.touched && !email.valid">
+              Fill this field correctly
           </span>
         </div>
         <div class="form-item">
@@ -22,7 +31,7 @@
         </div>
         <div class="form-item">
           <textarea name="message" id="message" #message="ngModel" [(ngModel)]="contact.message" required placeholder="Message" maxlength="1000"></textarea>
-          <span *ngIf="message.touched && !message.valid">
+          <span class="form-notice" *ngIf="message.touched && !message.valid">
               This field is required
           </span>
         </div>

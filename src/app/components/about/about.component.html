@@ -3,16 +3,20 @@
   <div id="about-data">
     <div class="div-side content-to-right">
       <div *ngFor="let dataElement of dataLeft" class="about-data-item">
-        <h3>{{ dataElement.text }}</h3>
-        <p *ngIf="dataElement.key == 'birthDay'">{{ dataElement.value | date: 'yyyy/MM/dd' }}</p>
-        <p *ngIf="dataElement.key != 'birthDay'">{{ dataElement.value }}</p>
+        <div *ngIf="dataElement">
+          <h3>{{ dataElement.text }}</h3>
+          <p *ngIf="dataElement.key == 'birthDay'">{{ dataElement.value | date: 'yyyy/MM/dd' }}</p>
+          <p *ngIf="dataElement.key != 'birthDay'">{{ dataElement.value }}</p>
+        </div>
       </div>
     </div>
     <div class="div-side content-to-left">
       <div *ngFor="let dataElement of dataRight" class="about-data-item">
-        <h3>{{ dataElement.text }}</h3>
-        <p *ngIf="!dataElement.link">{{ dataElement.value }}</p>
-        <a target="_blank" *ngIf="dataElement.link" href="{{ dataElement.value }}">{{ dataElement.value }}</a>
+        <div *ngIf="dataElement">
+          <h3>{{ dataElement.text }}</h3>
+          <p *ngIf="!dataElement.link">{{ dataElement.value }}</p>
+          <a target="_blank" *ngIf="dataElement.link" href="{{ dataElement.value }}">{{ dataElement.value }}</a>
+        </div>
       </div>
     </div>
   </div>

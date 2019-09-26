@@ -10,6 +10,8 @@ import { ContactService } from '../../services/contact.service';
 })
 export class ContactComponent implements OnInit {
   public contact: Contact;
+  public status: string;
+  public messageText: string;
 
   constructor(
     private contactService: ContactService
@@ -23,16 +25,28 @@ export class ContactComponent implements OnInit {
 
   onSubmit(form) {
       const formIsValid = form.form.valid;
-      console.log(formIsValid); // Returns true or false depending on the form validity, TODO: use this to print a error message 
+      
       if(formIsValid) {
         this.contactService.send(this.contact).subscribe(
           result => {
             console.log(result);
+            if(result.message == true) {
+              this.status = 'success';
+              this.messageText = 'Form sent correctly!';
+            } else {
+              this.status = 'error';
+              this.messageText = 'Error sending the form!';
+            }
           },
           error => {
             console.log(<any>error);
+            this.status = 'error';
+            this.messageText = 'Error sending the form!';
           }
         );
+      } else {
+        this.status = 'error';
+        this.messageText = 'Fill the form correctly!';
       }
   }
 

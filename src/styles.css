@@ -945,6 +945,10 @@ textarea {
     text-transform: uppercase;
 }
 
+.form-notice {
+    color: #fff;
+}
+
 #footer {
     display: block;
     background: #333;

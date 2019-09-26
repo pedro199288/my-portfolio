@@ -33,6 +33,8 @@ export class AboutComponent implements OnInit {
       result => {
         this.personalData = result.personalData;
 
+        console.log(this.personalData);
+
         // after getting the data, asign to variables and 
         var fullName = Helper.fetchDataByKey('fullname', this.personalData);
         var birthDay = Helper.fetchDataByKey('birthDay', this.personalData);

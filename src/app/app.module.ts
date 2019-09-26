@@ -59,7 +59,7 @@ export function tokenGetter(): string {
     LoginComponent,
     ViewAboutComponent,
     ViewExperienceComponent,
-    ViewEducationComponent,
+    ViewEducationComponent, 
     ViewPortfolioComponent,
   ],
   imports: [
@@ -72,8 +72,8 @@ export function tokenGetter(): string {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        whitelistedDomains: ['localhost:3700'],
-        blacklistedRoutes: ['localhost:3700/api/auth']
+        whitelistedDomains: ['monjidev.com:3700'], // TODO: change that when in production
+        blacklistedRoutes: ['monjidev.com:3700/api/auth', 'monjidev.com:3700/api/send']
       }
     })
   ],
