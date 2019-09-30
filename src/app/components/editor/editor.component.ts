@@ -160,7 +160,9 @@ export class EditorComponent implements OnInit {
               this.sendDataToParent.emit({object: response[thisProperty], type: 'create'});
             }
             // reset the form            
-            form.reset();            
+            form.reset();    
+            // set to null filesToUpload
+            this.filesToUpload = null;        
           } else {
             this.status = 'error';
             this.message = 'Save error!!';
@@ -229,6 +231,9 @@ export class EditorComponent implements OnInit {
               // Emit and event to the parent to check the data updated on db and change it on the component data property. 
               this.sendDataToParent.emit({object: response[preparedData.sucProp], type: 'update'});
             }
+            
+            // set to null filesToUpload
+            this.filesToUpload = null; 
           } else {
             this.status = 'error';
             this.message = 'Save error!!';

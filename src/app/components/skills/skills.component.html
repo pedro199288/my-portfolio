@@ -1,5 +1,7 @@
 <div class="wrapper" [ngClass]="{'editor-opened': this.editing}">
     <h2 class="section-title">my skills</h2>
+    <ng-content #name></ng-content>
+    
     <div id="skills-grid" class="wrapper">         
         <skill 
             *ngFor="let skill of skills"

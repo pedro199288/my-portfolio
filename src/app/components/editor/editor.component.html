@@ -37,7 +37,8 @@
 
                   <div class="form-item">
                     <label for="value">Value</label>
-                    <input type="text" name="value" #value="ngModel" [(ngModel)]="dataElement.value">
+                    <input *ngIf="dataElement.key != 'description'" type="text" name="value" #value="ngModel" [(ngModel)]="dataElement.value">
+                    <textarea *ngIf="dataElement.key == 'description'" name="value" #value="ngModel" [(ngModel)]="dataElement.value"></textarea>
                   </div>
                   
                   <div class="form-item">
@@ -267,6 +268,11 @@
                     </div>
 
                     <div class="form-item">
+                      <label for="clarification">Clarification</label>
+                      <textarea type="text" name="clarification" #clarification="ngModel" [(ngModel)]="dataElement.clarification"></textarea>
+                    </div>
+
+                    <div class="form-item">
                       <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="dataElement._id">
                       <input class="btn" type="submit" value="Save">
                     </div>
@@ -308,6 +314,11 @@
                 <div class="form-item">
                   <label for="link">Link</label>
                   <input type="text" name="link" #link="ngModel" [(ngModel)]="education.link">
+                </div>
+
+                <div class="form-item">
+                  <label for="clarification">Clarification</label>
+                  <textarea type="text" name="clarification" #clarification="ngModel" [(ngModel)]="education.clarification"></textarea>
                 </div>
 
                 <div class="form-item">

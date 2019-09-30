@@ -40,7 +40,6 @@ export class PersonalDataService{
 
     // Updates  document
     update(personalData: PersonalData): Observable<any> {
-        console.log(personalData);
         let params = JSON.stringify(personalData);
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
 

@@ -1,5 +1,5 @@
 <navbar id="navbar"></navbar>
-<div *ngIf="project" class="hero" [ngStyle]="{backgroundImage : 'url(' + apiUrl + '/project/get-image/' + project.image + ')'}">
+<div *ngIf="project" class="hero height-navbar" [ngStyle]="{backgroundImage : 'url(' + apiUrl + '/project/get-image/' + project.image + ')'}">
   <div class="bg-gradient rad-gradient-white"></div>
   <div class="hero-content">
     <h2>{{ project.name }}</h2>

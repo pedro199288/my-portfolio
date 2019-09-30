@@ -48,6 +48,18 @@ a {
     text-decoration: none;
 }
 
+.text-center {
+    text-align: center;
+}
+
+.margin-bottom {
+    margin-bottom: 6rem;
+}
+
+.setction-p {
+    margin: 3rem auto;
+}
+
 a.center-link {
     color: #777;
     display: block;
@@ -326,6 +338,9 @@ textarea {
 /* Navbar */
 #navbar {
     height: 5rem;
+    width: 100%;
+    top: 0px;
+    z-index: 50;
     background-color: #7BFF9E;
     display: flex;
     align-items: center;
@@ -590,6 +605,10 @@ textarea {
     background-color: #EEEEEE;
 }
 
+.experience-items-wrapper {
+    margin: 6rem auto;
+}
+
 .experience-item {
     display: grid;
     direction: ltr;
@@ -745,11 +764,10 @@ textarea {
 }
 
 .education-items-grid {
-    margin: 0 auto;
     width: 90%;
     max-width: 90rem;
     display: grid;
-    margin: 0 auto;
+    margin: 6rem auto;
     justify-content: center;
     grid-template-columns: repeat(auto-fit, minmax(28rem, 40rem));
     grid-column-gap: 4rem;
@@ -889,7 +907,6 @@ textarea {
 
 .port-item .img-wrapper img {
     max-height: 100%;
-    max-width: 100%;
 }
 
 .port-item > a{

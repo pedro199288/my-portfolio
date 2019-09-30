@@ -1,5 +1,6 @@
 <div class="wrapper" [ngClass]="{'editor-opened': this.editing}">
   <h2 class="section-title">portfolio</h2>
+  <ng-content #name class="margin-bottom"></ng-content>
   <div class="portfolio-grid">
     <div
       *ngFor="let project of projects" 
@@ -14,7 +15,7 @@
         </div>
       </div>
       
-      <a href=""><h4>{{ project.name }}</h4></a>
+      <a [routerLink]="['/project', project._id]"><h4>{{ project.name }}</h4></a>
       <p>
         {{ project.tools }}
       </p>

@@ -1,5 +1,6 @@
 <div class="wrapper" [ngClass]="{'editor-opened': this.editing}">
   <h2 class="section-title">about me</h2>
+  <ng-content #name></ng-content>
   <div id="about-data">
     <div class="div-side content-to-right">
       <div *ngFor="let dataElement of dataLeft" class="about-data-item">

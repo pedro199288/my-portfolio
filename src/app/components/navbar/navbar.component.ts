@@ -60,7 +60,7 @@ export class NavbarComponent implements OnInit {
     // Filter those links which have active = true
     this.links = this.links.filter(link => link.active );
 
-    //this.dislayControl();
+    this.dislayControl(this.paddingTopPage);
   }
 
   toggleMenu() {
@@ -73,29 +73,52 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['']);
   }
 
-  dislayControl(){
+  dislayControl(paddingTopPage){
     // Animate navbar when scrolling up or down
     var navBar = document.getElementById("navbar");
     if(navBar){
-      console.log(navBar.offsetTop); // TODO: ver que tengo que obtener del navbar
-        // last position of scrollTop
-        var lastScrollTop = 0;
-        
-        // detect scroll direction
-        window.addEventListener("scroll", function(){ 
-            if (window.pageYOffset > 90 || document.documentElement.scrollTop > 90) {
-                var st = window.pageYOffset || document.documentElement.scrollTop;
-                if (st > lastScrollTop){
-                    // downscroll code
-                    navBar.style.top = "-80px";
-                } else {
-                    // upscroll code
-                    navBar.style.top = "0px";
-                }
-                lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
-            }
-        }, false);
+      const navBarOffsetIni = navBar.offsetTop; // get initial position related to top of page
+      var navBarHeight = navBar.clientHeight; // get heigth related to top of page
+
+      // last position of scrollTop
+      var lastScrollTop = 0;
+      
+      // detect scroll direction
+      window.addEventListener("scroll", function(){ 
+        var st = window.pageYOffset || document.documentElement.scrollTop;
+        if (st > lastScrollTop){
+          // downscroll code
+          if (window.document.documentElement.scrollTop > navBarOffsetIni) {
+            paddingTopPage(navBarHeight);
+            navBar.style.top = -navBarHeight+'px'; 
+            navBar.style.position = 'fixed';            
+          }
+        } else {
+          // upscroll code
+          navBar.style.top = "0px";
+          if (window.document.documentElement.scrollTop < navBarOffsetIni ) {
+            navBar.style.position = 'relative';
+          }
+        }
+        lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+      }, false);
     }
+  }
+
+  /** Adds padding-top to the element af the top of the page (not taking into account the navbar) */
+  paddingTopPage(paddingTop){
+    var withPadding = document.querySelector('.padding-navbar');
+    var withHeight = document.querySelector('.height-navbar');
+    if (withPadding) {
+      // add padding to the element
+      withPadding.style.paddingTop = (50 + paddingTop)+'px';
+    } else if (withHeight) {
+      var vh25 = window.innerHeight/4; // get the 25vh value
+      // add height to the element
+      withHeight.style.height = (vh25 + paddingTop)+'px';
+      document.querySelector('.hero h2').style.marginTop = paddingTop+'px';
+    }
+
   }
 
 }

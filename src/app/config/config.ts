@@ -3,5 +3,5 @@
 
 // DevConfig
 export const Config = {
-    API_URL: 'http://monjidev.com:3700/api'
+    API_URL: 'http://localhost:3700/api'
 }

@@ -107,7 +107,7 @@ export const experience = [
         description: 'In this company, I work with PHP, JavaScript, HTML and CSS. My main tasks are building new websites or webapps for the company\'s clients and for the company itself. Also, sometimes is needed to change or add stuffs to some of the projects that had been builded before.'
     },
     {
-        key     : 'insomnia',
+        key     : 'my-own',
         date: {
             start: '2018-01-01',
             end: '',

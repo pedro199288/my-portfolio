@@ -1,8 +1,12 @@
 <hero-home #hero_home id="hero-home"></hero-home>
 <navbar id="navbar"></navbar>
 <about #about class="section" id="about"></about>
-<skills #skills class="section"></skills>
-<experience #experience id="experience" class="section" [maxItems]="4"></experience>
-<education #education id="education" class="section" [maxItems]="3"></education>
+<skills #skills class="section">
+    <div class="margin-bottom">
+        <p class="text-center setction-p">It is impossible to say what percentage you know about something if you don't know how much is the 100%... I guess I liked the idea of including some progress bars on my website, so these are the estimation of my current skills.</p>
+    </div>
+</skills>
+<experience #experience id="experience" class="section" [maxItems]="3"></experience>
+<education #education id="education" class="section" [maxItems]="4"></education>
 <portfolio #portfolio id="portfolio" class="section" [maxItems]="3"></portfolio>
 <contact #contact id="contact" class="section"></contact>
