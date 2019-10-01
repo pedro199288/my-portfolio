@@ -111,11 +111,14 @@ export class NavbarComponent implements OnInit {
     var withHeight = document.querySelector('.height-navbar');
     if (withPadding) {
       // add padding to the element
+      // @ts-ignore
       withPadding.style.paddingTop = (50 + paddingTop)+'px';
     } else if (withHeight) {
       var vh25 = window.innerHeight/4; // get the 25vh value
-      // add height to the element
+      // add height to the element 
+      // @ts-ignore
       withHeight.style.height = (vh25 + paddingTop)+'px';
+      // @ts-ignore
       document.querySelector('.hero h2').style.marginTop = paddingTop+'px';
     }
 
