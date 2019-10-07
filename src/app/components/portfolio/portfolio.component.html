@@ -3,7 +3,7 @@
   <ng-content #name class="margin-bottom"></ng-content>
   <div class="portfolio-grid">
     <div
-      *ngFor="let project of projects" 
+      *ngFor="let project of projects"
       class="port-item">
       <div class="img-wrapper">
         <div class="bg-buttons">
@@ -11,10 +11,10 @@
           <a target="_blank" href="{{project.website}}" class="btn btn-secondary">Go to website</a>
         </div>
         <div class="img">
-          <img src="{{apiUrl+'/project/get-image/'+project.image}}"> 
+          <img src="{{apiUrl+'/project/get-image/'+project.image}}">
         </div>
       </div>
-      
+
       <a [routerLink]="['/project', project._id]"><h4>{{ project.name }}</h4></a>
       <p>
         {{ project.tools }}

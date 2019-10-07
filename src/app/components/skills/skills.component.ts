@@ -18,7 +18,7 @@ export class SkillsComponent implements OnInit {
 
   constructor(
     private _skillService: SkillService,
-    private auth: AuthService,
+    public auth: AuthService,
   ) {
     this.editing = false;
   }
@@ -40,14 +40,14 @@ export class SkillsComponent implements OnInit {
       // get the id and the index, only used for update and delete cases.
       const id = data.object._id;
       const index = this.skills.findIndex(object => object._id === id);
-      
+
       if(data.type == 'create') {
         // add the new object to the array containing model objects
         this.skills.push(data.object)
       } else if (data.type == 'update') {
         // update the object on the index where the id has been found
         this.skills[index] = data.object;
-  
+
       } else if (data.type == 'delete') {
         // delete the object of the index where the id has been found
         this.skills.splice(index, 1);
@@ -55,6 +55,6 @@ export class SkillsComponent implements OnInit {
     } else {
       this.editing = !this.editing;
     }
-  } 
+  }
 
 }

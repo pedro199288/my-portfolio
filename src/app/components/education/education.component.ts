@@ -22,7 +22,7 @@ export class EducationComponent implements OnInit {
 
   constructor(
     private _educationService: EducationService,
-    private auth: AuthService
+    public auth: AuthService
   ) {
     this.maxItems = this.maxItems ? this.maxItems : null;
     this.editing = false;
@@ -45,18 +45,18 @@ export class EducationComponent implements OnInit {
       // get the id and the index, only used for update and delete cases.
       const id = data.object._id;
       const index = this.education.findIndex(object => object._id === id);
-      
+
       if(data.type == 'create') {
         // add the new object to the array containing model objects
         this.education.push(data.object)
       } else if (data.type == 'update') {
         // update the object on the index where the id has been found
         this.education[index] = data.object;
-  
+
       } else if (data.type == 'delete') {
         // delete the object of the index where the id has been found
         this.education.splice(index, 1);
-      } 
+      }
     } else {
       this.editing = !this.editing;
     }

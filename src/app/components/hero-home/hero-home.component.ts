@@ -8,9 +8,9 @@ import { Helper } from '../../services/helper.service';
   styleUrls: ['./hero-home.component.css']
 })
 export class HeroHomeComponent implements OnInit {
-  public firstName: object;
-  public lastName: object;
-  public shortDescription: object;
+  public firstName: any;
+  public lastName: any;
+  public shortDescription: any;
   public dataToShow : string[];
   public personalData: object[];
 
