@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  API_URL: 'https://localhost:3700/api'
+  API_URL: 'https://monjidev.com:3700/api'
 };
