@@ -8,6 +8,6 @@
       [ngClass]="{'education-item': true}">    
   </education-item>
   </div>
-  <a *ngIf="maxItems" class="center-link btn ligth" [routerLink]="[ '/education' ]"><fa-icon [icon]="faPlus"></fa-icon>See all</a>
+  <a *ngIf="maxItems" class="center-link btn ligth" [routerLink]="[ '/education' ]"><fa-icon [icon]="faPlus"></fa-icon>View all</a>
 </div>
 <editor *ngIf="auth.loggedIn" [data]="education" [dataName]="'education'" (sendDataToParent)="eventFromChild($event)"></editor>

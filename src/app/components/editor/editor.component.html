@@ -231,7 +231,6 @@
           <div *ngIf="dataName=='education'">
               <h4>education</h4>
               <div class="form-item" *ngFor="let dataElement of data">
-              {{'dateElement'}}
                   <form #educationForm="ngForm" (ngSubmit)="update(educationForm, 'Education')">
                     <div class="form-item">
                       <p><strong>{{dataElement.key}}</strong></p>
@@ -332,7 +331,6 @@
           <div *ngIf="dataName=='projects'">
               <h4>projects</h4>
             <div class="form-item" *ngFor="let dataElement of data">
-              {{'dateElement'}}
                   <form #projectsForm="ngForm" (ngSubmit)="update(projectsForm, 'Project')">
                     <div class="form-item">
                       <p><strong>{{dataElement.key}}</strong></p>
