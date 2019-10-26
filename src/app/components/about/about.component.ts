@@ -26,14 +26,14 @@ export class AboutComponent implements OnInit {
   ) {
     this.editing = false;
   }
-  
-  
+
+
   ngOnInit() {
     this._personalDataService.getAll().subscribe(
       result => {
         this.personalData = result.personalData;
 
-        // after getting the data, asign to variables and 
+        // after getting the data, asign to variables and
         var fullName = Helper.fetchDataByKey('fullname', this.personalData);
         var birthDay = Helper.fetchDataByKey('birthDay', this.personalData);
         var birthPlace = Helper.fetchDataByKey('birthPlace', this.personalData);
@@ -59,14 +59,14 @@ export class AboutComponent implements OnInit {
       // get the id and the index, only used for update and delete cases.
       const id = data.object._id;
       const index = this.personalData.findIndex(object => object._id === id);
-      
+
       if(data.type == 'create') {
         // add the new object to the array containing model objects
         this.personalData.push(data.object)
       } else if (data.type == 'update') {
         // update the object on the index where the id has been found
         this.personalData[index] = data.object;
-  
+
       } else if (data.type == 'delete') {
         // delete the object of the index where the id has been found
         this.personalData.splice(index, 1);
@@ -74,7 +74,7 @@ export class AboutComponent implements OnInit {
     } else {
       this.editing = !this.editing;
     }
-    
+
   }
 
 }

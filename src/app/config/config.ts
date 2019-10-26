@@ -1,7 +1,7 @@
 // Exporting the development environment config to use anywhere in the project.
-import { environment } from 'src/environments/environment';
+import { environment } from './../../environments/environment';
 
 // DevConfig
 export const Config = {
-    API_URL: environment.api_url
+    API_URL: environment.API_URL
 }

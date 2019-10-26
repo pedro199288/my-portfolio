@@ -82,16 +82,16 @@ export class NavbarComponent implements OnInit {
 
       // last position of scrollTop
       var lastScrollTop = 0;
-      
+
       // detect scroll direction
-      window.addEventListener("scroll", function(){ 
+      window.addEventListener("scroll", function(){
         var st = window.pageYOffset || document.documentElement.scrollTop;
         if (st > lastScrollTop){
           // downscroll code
           if (window.document.documentElement.scrollTop > navBarOffsetIni) {
             paddingTopPage(navBarHeight);
-            navBar.style.top = -navBarHeight+'px'; 
-            navBar.style.position = 'fixed';            
+            navBar.style.top = -navBarHeight+'px';
+            navBar.style.position = 'fixed';
           }
         } else {
           // upscroll code
@@ -115,7 +115,7 @@ export class NavbarComponent implements OnInit {
       withPadding.style.paddingTop = (50 + paddingTop)+'px';
     } else if (withHeight) {
       var vh25 = window.innerHeight/4; // get the 25vh value
-      // add height to the element 
+      // add height to the element
       // @ts-ignore
       withHeight.style.height = (vh25 + paddingTop)+'px';
       // @ts-ignore

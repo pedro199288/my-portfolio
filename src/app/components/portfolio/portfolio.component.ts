@@ -21,7 +21,7 @@ export class PortfolioComponent implements OnInit {
   public editing;
   @Input('maxItems') maxItems: object;
   faPlus = faPlus;
-  
+
   constructor(
     private _projectService: ProjectService,
     public auth: AuthService
@@ -30,7 +30,7 @@ export class PortfolioComponent implements OnInit {
     this.maxItems = this.maxItems ? this.maxItems : null;
     this.editing = false;
   }
-  
+
   ngOnInit() {
     this._projectService.getAll(this.maxItems).subscribe(
       result => {
@@ -48,14 +48,14 @@ export class PortfolioComponent implements OnInit {
       // get the id and the index, only used for update and delete cases.
       const id = data.object._id;
       const index = this.projects.findIndex(object => object._id === id);
-      
+
       if(data.type == 'create') {
         // add the new object to the array containing model objects
         this.projects.push(data.object)
       } else if (data.type == 'update') {
         // update the object on the index where the id has been found
         this.projects[index] = data.object;
-  
+
       } else if (data.type == 'delete') {
         // delete the object of the index where the id has been found
         this.projects.splice(index, 1);
