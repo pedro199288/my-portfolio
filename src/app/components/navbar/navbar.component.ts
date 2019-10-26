@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit {
   public showing: boolean;
 
   constructor(
-    private auth: AuthService,
+    public auth: AuthService,
     private router: Router
   ) {
     this.showing = false;

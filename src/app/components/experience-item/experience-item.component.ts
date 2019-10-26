@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Experience } from './../../models/Experience';
 
 @Component({
   selector: 'experience-item',
@@ -6,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./experience-item.component.css']
 })
 export class ExperienceItemComponent implements OnInit {
-  @Input('exp_item') exp_item: object;
+  @Input('exp_item') exp_item: Experience;
 
   constructor() { }
 

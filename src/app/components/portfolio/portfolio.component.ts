@@ -24,7 +24,7 @@ export class PortfolioComponent implements OnInit {
   
   constructor(
     private _projectService: ProjectService,
-    private auth: AuthService
+    public auth: AuthService
   ) {
     this.apiUrl = Config.API_URL;
     this.maxItems = this.maxItems ? this.maxItems : null;

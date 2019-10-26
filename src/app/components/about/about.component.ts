@@ -22,7 +22,7 @@ export class AboutComponent implements OnInit {
 
   constructor(
     private _personalDataService: PersonalDataService,
-    private auth: AuthService
+    public auth: AuthService
   ) {
     this.editing = false;
   }

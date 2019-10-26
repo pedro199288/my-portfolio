@@ -22,7 +22,7 @@ export class ExperienceComponent implements OnInit {
   
   constructor(
     private _experienceService: ExperienceService,
-    private auth: AuthService
+    public auth: AuthService
   ) {
     this.maxItems = this.maxItems ? this.maxItems : null;
     this.editing = false;

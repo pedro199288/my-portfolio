@@ -22,7 +22,7 @@ export class EducationComponent implements OnInit {
 
   constructor(
     private _educationService: EducationService,
-    private auth: AuthService
+    public auth: AuthService
   ) {
     this.maxItems = this.maxItems ? this.maxItems : null;
     this.editing = false;

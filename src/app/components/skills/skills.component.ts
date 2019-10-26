@@ -18,7 +18,7 @@ export class SkillsComponent implements OnInit {
 
   constructor(
     private _skillService: SkillService,
-    private auth: AuthService,
+    public auth: AuthService,
   ) {
     this.editing = false;
   }
