@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Config } from './config/config';
+
+console.log('API URL', Config.API_URL)
 
 @Component({
   selector: 'app-root',
