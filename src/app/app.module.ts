@@ -72,7 +72,7 @@ export function tokenGetter(): string {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        whitelistedDomains: ['monjidev.com:3700', 'localhost:3700'], // TODO: change that when in production
+        whitelistedDomains: ['monjidev.com:3700', 'localhost:3700', 'localhost:8080'], // TODO: change that when in production
         blacklistedRoutes: ['monjidev.com:3700/api/auth', 'monjidev.com:3700/api/send', 'localhost:3700/api/auth', 'localhost:3700/api/send']
       }
     })
